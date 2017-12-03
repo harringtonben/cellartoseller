@@ -1,0 +1,169 @@
+{
+	"beers": {
+		"beer0": {
+			"beer_name": "Pliny the Elder",
+			"beer_description": "A true leader in the hop-wars of the west coast, Pliny the Elder hits you over the head with hoppy bitterness and manages to smooth the rough edges out enough to become an enjoyable brew.",
+            "untappd_bid": "4499",
+            "beer_style": "IPA - Imperial / Double",
+            "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-4499_dc04a_sm.jpeg",
+            "beer_abv": "8",
+            "brewery_name": "Russian River Brewing Company",
+            "brewery_city": "Santa Rosa",
+            "brewery_state": "CA"
+		},
+		"beer1": {
+			"beer_name": "Pliny the Younger",
+			"beer_description": "Pliny the Younger was Pliny the Elder’s nephew, in the case of this beer, the \"Younger\" is a triple IPA. Pliny the Younger is hopped three times more than our standard IPA, and is dry hopped four different times.",
+            "untappd_bid": "28331",
+            "beer_style": "IPA - Triple",
+            "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-_28331_sm.jpeg",
+            "beer_abv": "10.25",
+            "brewery_name": "Russian River Brewing Company",
+            "brewery_city": "Santa Rosa",
+            "brewery_state": "CA"
+        },
+        "beer2": {
+			"beer_name": "Birthday Bomb!",
+			"beer_description": "BImperial stout aged on coffee, cacao nibs, vanilla beans and chile peppers.",
+            "untappd_bid": "1538766",
+            "beer_style": "Stout - American Imperial / Double",
+            "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-1538766_289c6_sm.jpeg",
+            "beer_abv": "13",
+            "brewery_name": "Prairie Artisan Ales",
+            "brewery_city": "Tulsa",
+            "brewery_state": "OK"
+        },
+        "beer3": {
+			"beer_name": "Sump Coffee Stout",
+			"beer_description": "Non-barrel aged Sump Stout. Imperial Stout blended with Sump Coffee",
+            "untappd_bid": "563017",
+            "beer_style": "Stout - American Imperial / Double",
+            "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-563017_b10ef_sm.jpeg",
+            "beer_abv": "10.5",
+            "brewery_name": "Perennial Artisan Ales",
+            "brewery_city": "St. Louis",
+            "brewery_state": "MO"
+        },
+        "beer4": {
+			"beer_name": "Guajava",
+			"beer_description": "South African Guava Golden Sour",
+            "untappd_bid": "1804675",
+            "beer_style": "Sour - Ale",
+            "beer_label": "https://untappd.akamaized.net/site/assets/images/temp/badge-beer-default.png",
+            "beer_abv": "6.6",
+            "brewery_name": "Wicked Weed Brewing",
+            "brewery_city": "Asheville",
+            "brewery_state": "NC"
+        },
+        "beer5": {
+			"beer_name": "Surf Wax IPA",
+			"beer_description": "If you want the ultimate, you've got to be willing to pay the ultimate price. But are you crazy enough? Show those guys that are inching their way on the freeways in their metal coffins that the human sprit is still alive. Mosaic. Citra. Centennial. Columbus. Lots of barley. Touch of wheat. The sea swallows the Sun. And who knows if it rises again. Vaya con dios.",
+            "untappd_bid": "510047",
+            "beer_style": "IPA - American",
+            "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-510047_e42d6_sm.jpeg",
+            "beer_abv": "6.8",
+            "brewery_name": "Burial Beer Co.",
+            "brewery_city": "Ashevile",
+            "brewery_state": "NC"
+        },
+        "beer6": {
+			"beer_name": "Abt 12",
+			"beer_description": "The St.Bernardus Abt 12 is the pride of our stable, the nec plus ultra of our brewery. Abbey ale brewed in the classic 'Quadrupel' style of Belgium's best Abbey Ales. Dark with a full, ivory-colored head. It has a fruity aroma, full of complex flavours and excells because of its long bittersweet finish with a hoppy bite. (10,0% ABV) Worldwide seen as one of the best beers in the world. It's a very balanced beer, with a full-bodied taste and a perfect equilibrium between malty, bitter and sweet. One of the original recipes from the days of license-brewing for the Trappist monks of Westvleteren",
+            "untappd_bid": "6760",
+            "beer_style": "Belgian Quad",
+            "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-6760_c9295_sm.jpeg",
+            "beer_abv": "10",
+            "brewery_name": "Brouwerij St. Bernardus",
+            "brewery_city": "Watou",
+            "brewery_state": "West-Vlaanderen"
+        },
+        "beer7": {
+			"beer_name": "Mango Upside Down Cake IPA",
+			"beer_description": "Some like to eat dessert, we like to drink it! Brewed as a different expression of the straight forward Double IPA; this was made with El Dorado & Vic Secret hops, lactose, vanilla beans, and mango puree.",
+            "untappd_bid": "1930610",
+            "beer_style": "IPA - Imperial / Double",
+            "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-1930610_aec51_sm.jpeg",
+            "beer_abv": "7.5",
+            "brewery_name": "Southern Grist Brewing Company",
+            "brewery_city": "Nashville",
+            "brewery_state": "TN"
+        },
+        "beer8": {
+			"beer_name": "Backwoods Bastard",
+			"beer_description": "Expect lovely, warm smells of single malt scotch, oaky bourbon barrels, smoke, sweet caramel and roasted malts, a bit of earthy spice and a scintilla of dark fruit. It’s a kick-back sipper made to excite the palate.",
+            "untappd_bid": "6830",
+            "beer_style": "Scotch Ale / Wee Heavy",
+            "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-6830_66eb0_sm.jpeg",
+            "beer_abv": "11.2",
+            "brewery_name": "Founders Brewing Co.",
+            "brewery_city": "Grand Rapids",
+            "brewery_state": "MI"
+        },
+        "beer9": {
+			"beer_name": "Julius",
+			"beer_description": "Bursting with pungent American hops, Julius - our flagship American IPA - is a bright, juicy beer filled with flavors and aromas of mango, peach, passionfruit, and a melange of citrus juice. A soft, pillowy mouthfeel and rounded bitterness ensure Julius will never tire the palate - a true joy to drink!",
+            "untappd_bid": "237985",
+            "beer_style": "IPA - American",
+            "beer_label": "https://untappd.akamaized.net/site/beer_logos/beer-237985_c70fc_sm.jpeg",
+            "beer_abv": "6.8",
+            "brewery_name": "Tree House Brewing Company",
+            "brewery_city": "Charlton",
+            "brewery_state": "MA"
+		}
+    },
+    "inventory": {
+        "item0": {
+            "for_trade": "true",
+            "number_for_trade": "2",
+            "quantity": "6",
+            "uid": "4",
+            "beer_id": "beer9",
+            "trade_id": "trade0"
+        },
+        "item1": {
+            "for_trade": "false",
+            "number_for_trade": "0",
+            "quantity": "6",
+            "uid": "4",
+            "beer_id": "beer7",
+            "trade_id": ""
+        },
+        "item2": {
+            "for_trade": "true",
+            "number_for_trade": "5",
+            "quantity": "10",
+            "uid": "3",
+            "beer_id": "beer3",
+            "trade_id": "trade0"
+        },
+        "item3": {
+            "for_trade": "true",
+            "number_for_trade": "3",
+            "quantity": "6",
+            "uid": "3",
+            "beer_id": "beer5",
+            "trade_id": "trade1"
+        },
+        "item4": {
+            "for_trade": "true",
+            "number_for_trade": "2",
+            "quantity": "6",
+            "uid": "4",
+            "beer_id": "beer1",
+            "trade_id": "trade1"
+        }
+        
+    },
+    "trades": {
+        "trade0": {
+            "owner_id": "3",
+            "receiver_id": "4",
+            "is_accepted": "true"
+        },
+        "trade1": {
+            "owner_id": "4",
+            "receiver_id": "3",
+            "is_accepted": "true"
+        }
+    }
+}
