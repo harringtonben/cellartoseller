@@ -1,0 +1,5 @@
+.DS_Store
+lib/node_modules
+public
+javascripts/AppConstants.js
+lib/package-lock.json
