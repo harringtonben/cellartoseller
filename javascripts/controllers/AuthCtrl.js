@@ -1,14 +1,14 @@
 'use strict';
 
-app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthService) {
-    $scope.authenticate = () => {
-        AuthService.authenticateGoogle().then((results) => {
-            $rootScope.uid = results.user.uid;
-            $scope.$apply(() => {
-                $location.url("/profile");
-            });     
-        }).catch((error) => {
-            console.log("error in authenticate Google", error);
-        });
-    };
+app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthService){
+  $scope.authenticate = () => {
+    AuthService.authenticateGoogle().then((result) =>{
+      $rootScope.navbar = true;
+      $scope.$apply(() =>{
+        $location.path("/search");
+      });
+    }).catch((err) =>{
+      console.log("error in authenticateGoogle", err);
+    });
+  };
 });
