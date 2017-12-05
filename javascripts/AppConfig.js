@@ -8,14 +8,8 @@ let isAuth = (AuthService) => new Promise ((resolve, reject) => {
 });
 
 
-app.run(function($location, $rootScope, FIREBASE_CONFIG, AuthService, tmdbService){
+app.run(function($location, $rootScope, FIREBASE_CONFIG, AuthService){
   firebase.initializeApp(FIREBASE_CONFIG);
-
-  tmdbService.tmdbConfiguration().then((result)=>{
-    $rootScope.image_url = result.data.images.base_url;
-  }).catch((err) =>{
-    console.log("error in tmdbConfiguration", err);
-  });
 
 //watch method that fires on change of a route.  3 inputs. 
   //event is a change event
@@ -48,7 +42,7 @@ app.run(function($location, $rootScope, FIREBASE_CONFIG, AuthService, tmdbServic
     } else if (appTo && logged){
       //if on /auth page AND logged in, redirect to search page
       $rootScope.navbar = true;
-      $location.path('/search');
+      $location.path('/profile');
     } else if (!appTo && logged){
       //if not on /auth page AND logged in see other navbar
       $rootScope.navbar = true;
