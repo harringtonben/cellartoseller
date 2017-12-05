@@ -1,9 +1,8 @@
 'use strict';
 
-app.service("UntappdService", function($http, $q, UNTAPPD_CONFIG) {
+app.service("UntappdService", function($http, UNTAPPD_CONFIG) {
     const getBeerData = (query) => {
-        console.log("query in getBeerData", query);
-        console.log('UNTAPPD_CONFIG', UNTAPPD_CONFIG);
+        return $http.get(`https://api.untappd.com/v4/search/beer?client_id=${UNTAPPD_CONFIG.clientId}&client_secret=${UNTAPPD_CONFIG.clientSecret}&q=${query}`);
     };
 
     return {getBeerData};
