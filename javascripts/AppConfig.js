@@ -26,13 +26,13 @@ app.run(function($location, $rootScope, FIREBASE_CONFIG, AuthService) {
         // check if the user is going to the auth page = currRoute.originalPath
         // if user is on auth page then appTo is true
         // if it finds something other than /auth it return a -1 and -1!==-1 so resolves to false
-        appTo = currRoute.originalPath.indexOf('/login') !== -1;
+        appTo = currRoute.originalPath.indexOf('/auth') !== -1;
     }
 
     //if not on /auth page AND not logged in redirect to /auth
     if (!appTo && !logged) {
       event.preventDefault();
-      $location.path('/login');
+      $location.path('/auth');
     }
   });
 });
