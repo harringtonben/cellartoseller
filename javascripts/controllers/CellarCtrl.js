@@ -16,7 +16,12 @@ app.controller("CellarCtrl", function($scope, CellarService, UntappdService) {
     $scope.saveToCellar = (beer) => {
         CellarService.searchForBeer(beer.beer.bid).then((results) => {
             if (isEmpty(results.data) === true) {
-                console.log("This beer has not been saved!!!");
+                let newBeer = CellarService.createBeerObject(beer);
+                CellarService.addToCellar(newBeer).then((results) => {
+                    console.log(results);
+                }).catch((error) => {
+                    console.log("Error in addToCellar");
+                });
             } else {
                 console.log("This beer is already saved!!!");
             }
