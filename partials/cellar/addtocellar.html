@@ -5,26 +5,26 @@
     </div>
 
     <div class="container-fluid">
-        <div class="beer-search-return col-xs-8 col-xs-offset-2" ng-repeat="beer in beers">
-            <div>
-                <img ng-src="beer.beer.beer_label" alt="">
+        <div class="beer-search-return col-xs-12" ng-repeat="beer in beers">
+            <div class="col-xs-1">
+                <img class="img-circle beer-label" ng-src="{{beer.beer.beer_label}}" alt="">
             </div>
-            <div>
+            <div class="col-xs-4">
                 <h4>{{beer.beer.beer_name}}</h4>
             </div>
-            <div>
+            <div class="col-xs-12">
                 <p>{{beer.beer.beer_description}}</p>
             </div>
-            <div>
+            <div class="col-xs-3">
                 <p>{{beer.beer.beer_style}}</p>
             </div>
-            <div>
-                <p>{{beer.beer.beer_abv}}</p>
+            <div class="col-xs-2">
+                <p>{{beer.beer.beer_abv}} %abv</p>
             </div>
-            <div>
+            <div class="col-xs-3"> 
                 <p>{{beer.brewery.brewery_name}}</p>
             </div>
-            <div>
+            <div class="col-xs-4">
                 <p>{{beer.brewery.location.brewery_city}}, {{beer.brewery.location.brewery_city}} </p>
             </div>
         </div>
