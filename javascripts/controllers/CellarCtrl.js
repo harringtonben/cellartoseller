@@ -15,21 +15,22 @@ app.controller("CellarCtrl", function($scope, CellarService, UntappdService) {
 
     $scope.saveToCellar = (beer) => {
         CellarService.searchForBeer(beer.beer.bid).then((results) => {
-            let beerToCheck = results[0];
-            console.log(beer.beer.bid);
-            console.log(beerToCheck.untappd_bid); 
-            if (beer.beer.bid === JSON.parse(beerToCheck.untappd_bid)) {
-                console.log("this beer is already saved!!");
-            } 
+            if (isEmpty(results.data) === true) {
+                console.log("This beer has not been saved!!!");
+            } else {
+                console.log("This beer is already saved!!!");
+            }
         }).catch((error) => {
             console.log("Error in searchForBeer", error);
         });
-
-        // let beerToSave = CellarService.createBeerObject(beer);
-        // CellarService.addToCellar(beerToSave).then((results) => {
-        //     console.log(results);
-        // }).catch((error) => {
-        //     console.log("Error in saveToCellar", error);
-        // });
     };
+
+    const isEmpty = (obj) => {
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                return false;
+        }
+        return JSON.stringify(obj) === JSON.stringify({});
+    };
+    
 });
