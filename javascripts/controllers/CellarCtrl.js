@@ -1,6 +1,15 @@
 'use strict';
 
-app.controller("CellarCtrl", function($scope, CellarService, UntappdService) {
+app.controller("CellarCtrl", function($location, $scope, CellarService, UntappdService) {
+    const saveToInventory = (beerId) => {
+        let beerObject = CellarService.createInventoryObject(beerId);
+        CellarService.addToInventory(beerObject).then((results) => {
+            $location.path('/profile');
+        }).catch((error) => {
+            console.log("Error in addToCellar", error);
+        });
+    };
+
     $scope.searchBeers = (event) => {
         if (event.keyCode === 13) {
             let query = event.target.value;
@@ -18,12 +27,14 @@ app.controller("CellarCtrl", function($scope, CellarService, UntappdService) {
             if (isEmpty(results.data) === true) {
                 let newBeer = CellarService.createBeerObject(beer);
                 CellarService.addToCellar(newBeer).then((results) => {
-                    console.log(results);
+                    let newBeerId = results.data.name;
+                    saveToInventory(newBeerId);
                 }).catch((error) => {
                     console.log("Error in addToCellar");
                 });
             } else {
-                console.log("This beer is already saved!!!");
+                let beerFromInventory = Object.keys(results.data);
+                saveToInventory(beerFromInventory[0]);
             }
         }).catch((error) => {
             console.log("Error in searchForBeer", error);

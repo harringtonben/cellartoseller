@@ -31,7 +31,7 @@ app.service("CellarService", function($http, $q, FIREBASE_CONFIG, AuthService) {
     };
 
     const addToInventory = (beer) => {
-        console.log(beer);
+        return $http.post(`${FIREBASE_CONFIG.databaseURL}/inventory.json`, JSON.stringify(beer));
     };
 
     const searchForBeer = (beerId) => {
