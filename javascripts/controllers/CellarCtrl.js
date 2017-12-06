@@ -5,8 +5,7 @@ app.controller("CellarCtrl", function($scope, UntappdService) {
         if (event.keyCode === 13) {
             let query = event.target.value;
             UntappdService.getBeerData(query).then((results) => {
-                let searchReturn = results.data.response.beers.items;
-                console.log("Results for searchBeers", searchReturn);
+                $scope.beers = results.data.response.beers.items;
             }).catch((error) => {
                 console.log("Error in searchBeers", error);
             });
