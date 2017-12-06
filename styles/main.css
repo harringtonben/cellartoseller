@@ -2,5 +2,16 @@
   background: transparent;
   border: none; }
 
+.beer-search-return {
+  margin: 20px;
+  background-color: #fff;
+  font-size: 12px;
+  padding: 12px; }
+  .beer-search-return img {
+    height: 50px;
+    width: 50px; }
+  .beer-search-return .description {
+    padding: 5px; }
+
 body {
   background-color: lightblue; }
