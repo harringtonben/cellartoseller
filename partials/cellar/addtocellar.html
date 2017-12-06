@@ -1,1 +1,35 @@
-{{cellar}}
+<div class="form-group">
+    <div class="input-group col-xs-6 col-xs-offset-3 search">
+        <span class="input-group-addon" ><span class="glyphicon glyphicon-search"></span></span>
+        <input type="text" class="form-control" aria-describedby="start-date" id="searchBar" placeholder="Search for a beer" ng-model="searchText" ng-keypress="searchBeers($event)">    
+    </div>
+
+    <div class="container-fluid">
+        <div class="beer-search-return col-xs-12 img-rounded" ng-repeat="beer in beers">
+            <div class="col-xs-2">
+                <img class="beer-label" ng-src="{{beer.beer.beer_label}}" alt="">
+            </div>
+            <div class="col-xs-4">
+                <h4>{{beer.beer.beer_name}}</h4>
+            </div>
+            <div class="col-xs-1 col-xs-offset-5">
+                <button class="btn btn-primary save-button" ng-click="saveToCellar(beer)"><i class="fa fa-plus"></i></button>
+            </div>
+            <div class="col-xs-12 description">
+                <p>{{beer.beer.beer_description}}</p>
+            </div>
+            <div class="col-xs-3">
+                <p>{{beer.beer.beer_style}}</p>
+            </div>
+            <div class="col-xs-2">
+                <p>{{beer.beer.beer_abv}} %abv</p>
+            </div>
+            <div class="col-xs-4"> 
+                <p>{{beer.brewery.brewery_name}}</p>
+            </div>
+            <div class="col-xs-3">
+                <p>{{beer.brewery.location.brewery_city}}, {{beer.brewery.location.brewery_city}} </p>
+            </div>
+        </div>
+    </div>
+</div>
