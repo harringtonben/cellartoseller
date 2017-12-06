@@ -5,6 +5,7 @@
     background-color: $white;
     font-size: 12px;
     padding: 12px;
+    box-shadow: $boxshadow;
 
         img {
             height: 50px;
@@ -13,5 +14,11 @@
 
         .description {
             padding: 5px;
+        }
+
+        .save-button {
+            background: transparent;
+            border: none;
+            color: $black;
         }
 }

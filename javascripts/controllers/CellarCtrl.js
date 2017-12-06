@@ -6,6 +6,7 @@ app.controller("CellarCtrl", function($scope, UntappdService) {
             let query = event.target.value;
             UntappdService.getBeerData(query).then((results) => {
                 $scope.beers = results.data.response.beers.items;
+                event.target.value = '';
             }).catch((error) => {
                 console.log("Error in searchBeers", error);
             });

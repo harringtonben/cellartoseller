@@ -6,12 +6,17 @@
   margin: 20px;
   background-color: #fff;
   font-size: 12px;
-  padding: 12px; }
+  padding: 12px;
+  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75); }
   .beer-search-return img {
     height: 50px;
     width: 50px; }
   .beer-search-return .description {
     padding: 5px; }
+  .beer-search-return .save-button {
+    background: transparent;
+    border: none;
+    color: #000; }
 
 body {
   background-color: lightblue; }
