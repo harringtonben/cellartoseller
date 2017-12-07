@@ -1,5 +1,13 @@
 'use strict';
 
-app.controller("UsersCtrl", function($scope) {
-    $scope.users = "this is my users page";
+app.controller("UsersCtrl", function($scope, UserService) {
+    const getUsers = () => {
+        UserService.getAllUsers().then((results) => {
+            console.log(results);
+        }).catch((error) => {
+            console.log("error in getUsers", error);
+        });
+    };
+
+    getUsers();
 });
