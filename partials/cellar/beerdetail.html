@@ -1,6 +1,6 @@
 <div>
     <div class="col-xs-4 col-xs-offset-4">
-        <form novalidate class="form-horizontal" name="updateInventoryForm" ng-submit="updateInventory(beerInfo)">
+        <form novalidate class="form-horizontal" name="updateInventoryForm" ng-submit="updateInventory(updateInventoryForm)">
             <div class="form-group">
         
                 <label for="quantity">Quantity:</label>
@@ -11,9 +11,9 @@
                 <label for="forTrade">Is this beer for trade?</label>
                 <div>
                 <label class="radio-inline">
-                    <input type="radio" name="secretRadio" ng-model="updateInventoryForm.for_trade" value="true">yes</label>
+                    <input type="radio" name="forTrade" ng-model="updateInventoryForm.for_trade" value="true">yes</label>
                 <label class="radio-inline">
-                    <input type="radio" name="secretRadio" ng-model="updateInventoryForm.for_trade" value="false">no</label>
+                    <input type="radio" name="forTrade" ng-model="updateInventoryForm.for_trade" value="false">no</label>
                 </div>
                 <div ng-if="updateInventoryForm.for_trade === 'true'">
                     <label for="boardDescription">Quantity for trade:</label>

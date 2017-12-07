@@ -10,7 +10,12 @@ app.controller("InventoryCtrl", function($routeParams, $scope, InventoryService)
     };
 
     $scope.updateInventory = (details) => {
-        console.log($scope.updateInventoryForm.for_trade, typeof $scope.updateInventoryForm.for_trade);
+        let updatedBeer = InventoryService.createInventoryObject(details, $scope.inventory);
+        InventoryService.updateInventoryItem(updatedBeer, $routeParams.id).then((results) => {
+            console.log(results);
+        }).catch((error) => {
+            console.log("error in updateInventory", error);
+        });
     };
    
 
