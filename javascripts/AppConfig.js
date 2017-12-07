@@ -69,5 +69,9 @@ app.config(function($routeProvider) {
         templateUrl: 'partials/profile.html',
         controller: 'ProfileCtrl'
     })
+    .when("/inventory/:id", {
+        templateUrl: 'partials/cellar/beerdetail.html',
+        controller: 'InventoryCtrl'
+    })
     .otherwise("/auth");
 });

@@ -12,7 +12,7 @@
 <body ng-app="CellarToSeller">
 
     <div ng-include="'./partials/navbar.html'"></div>
-    <div class="col-xs-8 col-xs-offset-2" ng-view></div>
+    <div class="container" ng-view></div>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>  
 <script type="text/javascript" src="./lib/node_modules/jquery/dist/jquery.min.js"></script>
@@ -30,6 +30,8 @@
 
 <script type="text/javascript" src="./javascripts/services/AuthService.js"></script>
 <script type="text/javascript" src="./javascripts/services/CellarService.js"></script>
+<script type="text/javascript" src="./javascripts/services/ProfileService.js"></script>
+<script type="text/javascript" src="./javascripts/services/InventoryService.js"></script>
 <script type="text/javascript" src="./javascripts/services/UntappdService.js"></script>
 
 <script type="text/javascript" src="./javascripts/controllers/AuthCtrl.js"></script>
@@ -37,6 +39,7 @@
 <script type="text/javascript" src="./javascripts/controllers/ModalCtrl.js"></script>
 <script type="text/javascript" src="./javascripts/controllers/CellarCtrl.js"></script>
 <script type="text/javascript" src="./javascripts/controllers/UsersCtrl.js"></script>
+<script type="text/javascript" src="./javascripts/controllers/InventoryCtrl.js"></script>
 <script type="text/javascript" src="./javascripts/controllers/ProfileCtrl.js"></script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<div>
+    <div class="col-xs-4 col-xs-offset-4">
+        <form novalidate class="form-horizontal" name="updateInventoryForm" ng-submit="updateInventory(updateInventoryForm)">
+            <div class="form-group">
+        
+                <label for="quantity">Quantity:</label>
+                <div>
+                <input type="text" class="form-control col-xs-4" id="quantity" placeholder="Number in cellar" ng-model="inventory.quantity" required>
+                </div>
+
+                <label for="forTrade">Is this beer for trade?</label>
+                <div>
+                <label class="radio-inline">
+                    <input type="radio" name="forTrade" ng-model="updateInventoryForm.for_trade" value="true">yes</label>
+                <label class="radio-inline">
+                    <input type="radio" name="forTrade" ng-model="updateInventoryForm.for_trade" value="false">no</label>
+                </div>
+                <div ng-if="updateInventoryForm.for_trade === 'true'">
+                    <label for="boardDescription">Quantity for trade:</label>
+                    <div>
+                    <input type="text" class="form-control col-xs-4" id="boardDescription" placeholder="Number for Trade" ng-model="inventory.number_for_trade" required>
+                    </div>
+                </div>
+        
+                <div>
+                <button ng-if="updateInventoryForm.$valid" type="submit" class="btn btn-primary" value="Save">Save Inventory</button>
+                </div>
+                
+            </div>
+            </form>
+    </div>
+</div>
