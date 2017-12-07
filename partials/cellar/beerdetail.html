@@ -1,29 +1,29 @@
 <div>
-    <div>
-        <form novalidate class="form-horizontal" name="newBoardForm" ng-submit="addNew(boardInfo)">
+    <div class="col-xs-4 col-xs-offset-4">
+        <form novalidate class="form-horizontal" name="updateInventoryForm" ng-submit="updateInventory(beerInfo)">
             <div class="form-group">
         
-                <label for="boardName">Board Name:</label>
+                <label for="quantity">Quantity:</label>
                 <div>
-                <input type="text" class="form-control" id="boardName" placeholder="How it will appear to other users" ng-model="boardInfo.name" required>
+                <input type="text" class="form-control col-xs-4" id="quantity" placeholder="Number in cellar" ng-model="inventory.quantity" required>
                 </div>
-        
-                <label for="boardDescription">Board Description:</label>
-                <div>
-                <input type="text" class="form-control" id="boardDescription" placeholder="Say something about this board" ng-model="boardInfo.description" required>
-                </div>
-        
-                <h4>Secret</h4>
-                <label for="secretRadio">Only you will be able to see this board:</label>
+
+                <label for="forTrade">Is this beer for trade?</label>
                 <div>
                 <label class="radio-inline">
-                    <input type="radio" name="secretRadio" ng-model="boardInfo.is_secret" value="true">Secret</label>
+                    <input type="radio" name="secretRadio" ng-model="updateInventoryForm.for_trade" value="true">yes</label>
                 <label class="radio-inline">
-                    <input type="radio" name="secretRadio" ng-model="boardInfo.is_secret" value="false">Not a secret</label>
+                    <input type="radio" name="secretRadio" ng-model="updateInventoryForm.for_trade" value="false">no</label>
+                </div>
+                <div ng-if="updateInventoryForm.for_trade === 'true'">
+                    <label for="boardDescription">Quantity for trade:</label>
+                    <div>
+                    <input type="text" class="form-control col-xs-4" id="boardDescription" placeholder="Number for Trade" ng-model="inventory.number_for_trade" required>
+                    </div>
                 </div>
         
                 <div>
-                <button ng-if="newBoardForm.$valid" type="submit" class="btn btn-default" value="Save">Save Board</button>
+                <button ng-if="updateInventoryForm.$valid" type="submit" class="btn btn-primary" value="Save">Save Inventory</button>
                 </div>
                 
             </div>
