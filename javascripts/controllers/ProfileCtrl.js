@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("ProfileCtrl", function($scope, AuthService, ProfileService) {
+app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileService) {
     const getInventory = () => {
         let inventory = [];
         let beerList = [];
@@ -30,7 +30,7 @@ app.controller("ProfileCtrl", function($scope, AuthService, ProfileService) {
 
     getInventory();
 
-    $scope.updateInventory = () => {
-
+    $scope.updateInventory = (itemId) => {
+        $location.path(`/inventory/${itemId}`);
     };
 });
