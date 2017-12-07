@@ -37,5 +37,9 @@ app.service("ProfileService", function($http, $q, FIREBASE_CONFIG) {
         });
     };
 
-    return {getMyBeers, getMyInventory};
+    const deleteInventoryItem = (itemId) => {
+        return $http.delete(`${FIREBASE_CONFIG.databaseURL}/inventory/${itemId}.json`);
+    };
+
+    return {deleteInventoryItem, getMyBeers, getMyInventory};
 });
