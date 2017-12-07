@@ -34,4 +34,12 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileSe
     $scope.updateInventory = (itemId) => {
         $location.path(`/inventory/${itemId}`);
     };
+
+    $scope.deleteInventory = (inventoryId) => {
+        ProfileService.deleteInventoryItem(inventoryId).then((results) => {
+            getInventory();
+        }).catch((error) => {
+            console.log("error in deleteInventory", error);
+        });
+    };
 });
