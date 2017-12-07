@@ -24,11 +24,21 @@
   background-color: #fff;
   font-size: 12px;
   padding: 12px;
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75); }
+  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+  position: relative; }
+  .item .delete {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: transparent;
+    border: 0px;
+    color: #000; }
   .item p {
     margin: 0; }
-  .item .item:hover {
-    box-shadow: 2px 8px 42px -3px rgba(0, 0, 0, 0.75); }
+
+.item:hover {
+  box-shadow: 5px 10px 15px -1px rgba(0, 0, 0, 0.75);
+  margin-bottom: 15px; }
 
 body {
   background-color: lightblue; }

@@ -34,4 +34,8 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileSe
     $scope.updateInventory = (itemId) => {
         $location.path(`/inventory/${itemId}`);
     };
+
+    $scope.deleteInventory = (inventoryId) => {
+        console.log(inventoryId);
+    };
 });

@@ -2,10 +2,13 @@
 
     <div class="inventory col-xs-4">
         <h4>My Cellar</h4>
-        <div class="item img-rounded col-xs-10" ng-repeat="item in inventory" ng-click="updateInventory(item.inventory_id)">
-            <p>{{item.brewery_name}} {{item.beer_name}}</p>
-            <p>Quantity: {{item.quantity}}</p>
-            <p ng-if="item.for_trade != 'false'">Number for trade: {{item.number_for_trade}}</p>
+        <div class="item img-rounded col-xs-11" ng-repeat="item in inventory">
+            <button class="btn btn-md btn-default delete" ng-click="deleteInventory(item.inventory_id)"><i class="fa fa-trash-o"></i></button>
+            <div ng-click="updateInventory(item.inventory_id)">
+                <p>{{item.brewery_name}} {{item.beer_name}}</p>
+                <p>Quantity: {{item.quantity}}</p>
+                <p ng-if="item.for_trade != 'false'">Number for trade: {{item.number_for_trade}}</p>
+            </div>
         </div>
     </div>
 </div>

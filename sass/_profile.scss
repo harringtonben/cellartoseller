@@ -7,12 +7,23 @@
     font-size: 12px;
     padding: 12px;
     box-shadow: $boxshadow;
+    position: relative;
+
+        .delete {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            background: transparent;
+            border: 0px;
+            color: $black;
+        }
 
         p {
             margin: 0;
         }
+}
 
-        .item:hover {
-            box-shadow: $boxshadow-hover;
-        }
+.item:hover {
+    box-shadow: $boxshadow-hover;
+    margin-bottom: 15px;
 }
