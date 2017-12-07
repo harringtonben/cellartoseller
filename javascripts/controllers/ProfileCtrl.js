@@ -15,6 +15,7 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileSe
                             beer.for_trade = item.for_trade;
                             beer.number_for_trade = item.number_for_trade;
                             beer.quantity = item.quantity;
+                            beer.inventory_id = item.id;
                             myInventory.push(beer);
                         }
                     });
