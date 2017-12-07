@@ -1,0 +1,18 @@
+@import 'variables';
+
+.item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: $white;
+    font-size: 12px;
+    padding: 12px;
+    box-shadow: $boxshadow;
+
+        p {
+            margin: 0;
+        }
+
+        .item:hover {
+            box-shadow: $boxshadow-hover;
+        }
+}

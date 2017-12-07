@@ -17,9 +17,9 @@ app.service("CellarService", function($http, $q, FIREBASE_CONFIG, AuthService) {
 
     const createInventoryObject = (beerId) => {
         return {
-            "for_trade": "",
+            "for_trade": false,
             "number_for_trade": "",
-            "quantity": "",
+            "quantity": 1,
             "uid": AuthService.getCurrentUid(),
             "beer_id": beerId,
             "trade_id": ""
