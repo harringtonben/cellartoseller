@@ -1,5 +1,10 @@
 <div class="row" >
-    <div class="users img-rounded col-sm-3 col-md-3" ng-repeat="user in users">
+    <div class="input-group col-xs-6 col-xs-offset-3 search">
+        <span class="input-group-addon" ><span class="glyphicon glyphicon-search"></span></span>
+        <input type="text" class="form-control" aria-describedby="start-date" id="searchBar" placeholder="Search all users" ng-model="searchText" ng-keypress="searchBeers($event)">    
+    </div>
+
+    <div class="users img-rounded col-sm-3 col-md-3" ng-repeat="user in users | filter: {name:searchText}">
         <div class="thumbnail">
         <img class="img-circle" ng-src="{{user.picture}}" alt="">
         <div class="caption text-center">

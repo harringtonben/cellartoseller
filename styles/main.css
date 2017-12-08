@@ -48,5 +48,9 @@
   box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
   padding: 20px; }
 
+.search {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
 body {
   background-color: lightblue; }
