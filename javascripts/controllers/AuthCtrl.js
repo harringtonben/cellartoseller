@@ -7,13 +7,15 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthService){
       AuthService.searchUsers().then((results) => {
         if (isEmpty(results.data) === true) {
           let newUser = AuthService.createUserObject(result);
-          console.log(newUser);
-          // AuthService.addUser(newUser);
+          AuthService.addUser(newUser).then(() => {
+            
+          }).catch((error) => {
+            console.log("Error in searchUsers", error);
+          });
         }
       }).catch((error) => {
         console.log("Error in getting users", error);
       });
-      console.log(result);
       $scope.$apply(() =>{
         $location.path("/search");
       });

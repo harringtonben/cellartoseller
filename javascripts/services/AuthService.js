@@ -27,8 +27,8 @@ app.service("AuthService", function ($http, $window, FIREBASE_CONFIG) {
     return $http.get(`${FIREBASE_CONFIG.databaseURL}/users.json?orderBy="uid"&equalTo="${getCurrentUid()}"`);
   };
 
-  const addUser = () => {
-
+  const addUser = (user) => {
+    return $http.post(`${FIREBASE_CONFIG.databaseURL}/users.json`, JSON.stringify(user));
   };
 
   const createUserObject = (user) => {
@@ -40,5 +40,5 @@ app.service("AuthService", function ($http, $window, FIREBASE_CONFIG) {
     };
   };
 
-  return {authenticateGoogle, isAuthenticated, logout, getCurrentUid, searchUsers, createUserObject};
+  return {addUser, authenticateGoogle, isAuthenticated, logout, getCurrentUid, searchUsers, createUserObject};
 });
