@@ -40,5 +40,13 @@
   box-shadow: 5px 10px 15px -1px rgba(0, 0, 0, 0.75);
   margin-bottom: 15px; }
 
+.users img {
+  height: 100px;
+  width: 100px; }
+
+.thumbnail {
+  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+  padding: 20px; }
+
 body {
   background-color: lightblue; }

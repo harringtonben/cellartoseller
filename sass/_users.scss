@@ -1,0 +1,13 @@
+@import 'variables';
+
+.users {
+    img {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+.thumbnail {
+    box-shadow: $boxshadow;
+    padding: 20px;
+}
