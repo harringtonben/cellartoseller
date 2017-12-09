@@ -75,7 +75,7 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
         
     };
 
-    // getMyInventory();
+    getMyInventory();
     getReceiverInventory();
 
 });
