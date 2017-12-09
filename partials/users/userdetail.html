@@ -7,21 +7,25 @@
         </div>
     </div>
 <div class="user-profile img-rounded">
-    <div class="user-inventory col-xs-7">
+    <div class="user-inventory col-xs-6">
         <h3>User Inventory</h3>
         <div ng-repeat="item in inventory" class="beer col-xs-12">
             <div>
                 <img ng-src="{{item.beer_label}}" class="beer-label img-circle col-xs-4" alt="">
             </div>
-            <h4 class="col-xs-8">{{item.beer_name}}</h4>
+            <h4 class="col-xs-4">{{item.beer_name}}</h4>
+            <h4 class="col-xs-4"> Quantity in Cellar: {{item.quantity}}</h4>
             <p class="col-xs-4">ABV: {{item.beer_abv}}</p>
             <p class="col-xs-4">Style: {{item.beer_style}}</p>
         </div>
     </div>
     <div class="user-inventory col-xs-3">
         <h3>Beers for Trade</h3>
-        <div ng-if="item.for_trade != 'false'" ng-repeat="trade in inventory" class="beer col-xs-12">
-            
+        <div ng-if="trade.for_trade === 'true'"  ng-repeat="trade in inventory" class="beer col-xs-12">
+        <div>
+            <p>{{trade.beer_name}}</p>
+            <p>{{trade.number_for_trade}}</p>
+        </div>
         </div>
     </div>
 </div>

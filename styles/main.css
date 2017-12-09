@@ -52,11 +52,9 @@
   margin-top: 20px;
   margin-bottom: 20px; }
 
-.user-details {
-  margin: 50px; }
-  .user-details img {
-    max-height: 200px;
-    max-width: 200px; }
+.user-details img {
+  max-height: 100px;
+  max-width: 100px; }
 
 .user-inventory {
   margin-top: 50px;
