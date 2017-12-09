@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("UsersCtrl", function($scope, UserService) {
+app.controller("UsersCtrl", function($location, $scope, UserService) {
     const getUsers = () => {
         UserService.getAllUsers().then((results) => {
             $scope.users = results;
@@ -10,4 +10,9 @@ app.controller("UsersCtrl", function($scope, UserService) {
     };
 
     getUsers();
+
+    $scope.seeUserProfile = (userId) => {
+        $location.path(`users/${userId}`);
+    };
+
 });

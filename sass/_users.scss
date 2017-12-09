@@ -16,3 +16,29 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.user-details {
+    margin: 50px;
+
+    img {
+        max-height: 200px;
+        max-width: 200px;
+    }
+}
+
+.user-inventory {
+    margin-top: 50px;
+    background-color: $white;
+    padding: 10px;
+    box-shadow: $boxshadow;
+
+    .beer {
+        padding: 10px;
+
+        .beer-label {
+            height: 100px;
+            width: 135px;
+        }
+    }
+    
+}
