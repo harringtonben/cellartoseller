@@ -16,3 +16,38 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.user-details {
+    img {
+        max-height: 100px;
+        max-width: 100px;
+    }
+}
+.user-inventory {
+    margin-top: 50px;
+    background-color: $white;
+    padding: 10px;
+    box-shadow: $boxshadow;
+
+    .beer {
+        padding: 10px;
+
+        .beer-label {
+            height: 100px;
+            width: 135px;
+        }
+    }
+    
+}
+
+.beer-trades {
+    margin-top: 50px;
+
+    .user-trades {
+        background-color: $white;
+        padding: 10px;
+        box-shadow: $boxshadow;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
