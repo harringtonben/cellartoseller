@@ -38,7 +38,19 @@ app.service("TradeService", function($http, $q, FIREBASE_CONFIG) {
     };
 
     const getUserProfile = (userId) => {
-        return $http.get(`${FIREBASE_CONFIG.databaseURL}/users/${userId}.json`);
+        let userProfile = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FIREBASE_CONFIG.databaseURL}/users.json?orderBy="uid"&equalTo="${userId}"`).then((results) => {
+               let profile = results.data;
+                Object.keys(profile).forEach((key) => {
+                    profile[key].id = key;
+                    userProfile.push(profile[key]);   
+                });
+                resolve(userProfile[0]);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
     };
 
     return {getUserBeers, getUserInventory, getUserProfile};
