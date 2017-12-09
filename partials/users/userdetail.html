@@ -1,31 +1,30 @@
-<div class="user-details">
-        <div class="col-xs-4">
-            <img ng-src="{{userInfo.picture}}" class="img-circle" alt="">
-        </div>
-        <div class="col-xs-8">
-            <h1>{{userInfo.name}}</h1>
-        </div>
+<div class="user-details row">
+    <div class="col-xs-4">
+        <img ng-src="{{userInfo.picture}}" class="img-circle" alt="">
     </div>
-<div class="user-profile img-rounded">
-    <div class="user-inventory col-xs-6">
+    <div class="col-xs-8">
+        <h1>{{userInfo.name}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="user-inventory col-xs-7 img-rounded">
         <h3>User Inventory</h3>
         <div ng-repeat="item in inventory" class="beer col-xs-12">
             <div>
                 <img ng-src="{{item.beer_label}}" class="beer-label img-circle col-xs-4" alt="">
             </div>
-            <h4 class="col-xs-4">{{item.beer_name}}</h4>
-            <h4 class="col-xs-4"> Quantity in Cellar: {{item.quantity}}</h4>
-            <p class="col-xs-4">ABV: {{item.beer_abv}}</p>
-            <p class="col-xs-4">Style: {{item.beer_style}}</p>
+            <h4 class="col-xs-8">{{item.beer_name}}</h4>
+            <p class="col-xs-4"> Quantity in Cellar: {{item.quantity}}</p>
+            <p class="col-xs-4">ABV: {{item.beer_abv}} %</p>
+            <p class="col-xs-8">Style: {{item.beer_style}}</p>
         </div>
     </div>
-    <div class="user-inventory col-xs-3">
-        <h3>Beers for Trade</h3>
-        <div ng-if="trade.for_trade === 'true'"  ng-repeat="trade in inventory" class="beer col-xs-12">
-        <div>
-            <p>{{trade.beer_name}}</p>
-            <p>{{trade.number_for_trade}}</p>
-        </div>
-        </div>
+<div class="col-xs-4 col-xs-offset-1 beer-trades">
+    <h3>Beers for Trade</h3>
+    <div class="user-trades img-rounded" ng-if="trade.for_trade === 'true'" ng-repeat="trade in inventory">
+            <div>
+                <p>Beer: {{trade.beer_name}}</p>
+                <p>Number for trade: {{trade.number_for_trade}}</p>
+            </div>
     </div>
 </div>

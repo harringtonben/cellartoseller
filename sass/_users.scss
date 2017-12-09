@@ -39,3 +39,15 @@
     }
     
 }
+
+.beer-trades {
+    margin-top: 50px;
+
+    .user-trades {
+        background-color: $white;
+        padding: 10px;
+        box-shadow: $boxshadow;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
