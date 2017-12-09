@@ -1,15 +1,15 @@
 'use strict';
 
-app.controller("UserDetailCtrl", function($routeParams, $scope, UserService) {
-    const getUserDetails = () => {
+app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeService) {
+    const getUserDetails = (userId) => {
         let userInventory = [];
         let beerList = [];
         let inventory = [];
-        UserService.getUserProfile($routeParams.id).then((result) => {
+        TradeService.getUserProfile(userId).then((result) => {
             $scope.userInfo = result.data;
-            UserService.getUserInventory($scope.userInfo.uid).then((results) => {
+            TradeService.getUserInventory(userId).then((results) => {
                 inventory = results;
-                UserService.getUserBeers().then((results) => {
+                TradeService.getUserBeers().then((results) => {
                     beerList = results;
                     beerList.forEach((beer) => {
                         inventory.forEach((item) => {
@@ -23,6 +23,8 @@ app.controller("UserDetailCtrl", function($routeParams, $scope, UserService) {
                         });
                     });
                     $scope.inventory = userInventory;
+                    console.log($scope.userInfo);
+                    console.log($scope.inventory);
                 }).catch((error) => {
                     console.log("Error in getMyBeers", error);
                 });
@@ -34,6 +36,6 @@ app.controller("UserDetailCtrl", function($routeParams, $scope, UserService) {
         });
     };
 
-    getUserDetails();
+    getUserDetails(AuthService.getCurrentUid);
+    // getUserDetails($rootScope.receiverId);
 });
-

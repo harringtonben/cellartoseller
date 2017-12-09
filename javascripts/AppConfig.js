@@ -77,5 +77,9 @@ app.config(function($routeProvider) {
         templateUrl: 'partials/users/userdetail.html',
         controller: 'UserDetailCtrl'
     })
+    .when("/newtrade", {
+        templateUrl: 'partials/trades/newtrade.html',
+        controller: 'NewTradeCtrl'
+    })
     .otherwise("/auth");
 });

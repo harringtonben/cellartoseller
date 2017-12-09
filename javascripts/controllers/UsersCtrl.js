@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("UsersCtrl", function($location, $scope, UserService) {
+app.controller("UsersCtrl", function($location, $rootScope, $scope, UserService) {
     const getUsers = () => {
         UserService.getAllUsers().then((results) => {
             $scope.users = results;
@@ -13,6 +13,11 @@ app.controller("UsersCtrl", function($location, $scope, UserService) {
 
     $scope.seeUserProfile = (userId) => {
         $location.path(`users/${userId}`);
+    };
+
+    $scope.startTrade = (receiverId) => {
+        $rootScope.receiverId = receiverId;
+        $location.path('/newtrade');
     };
 
 });
