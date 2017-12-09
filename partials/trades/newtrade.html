@@ -1,0 +1,11 @@
+<div class="myProfile col-xs-5">
+    <img ng-src="{{myProfile.picture}}" class="img-rounded">
+    <h1>{{myProfile.name}}'s Beers for Trade</h1>
+    <div ng-if="inventory.for_trade === 'true'" ng-repeat="trade in inventory">
+        <img ng-src="{{inventory.beer_label}}" alt="">
+        <h4>{{inventory.beer_name}}</h4>
+        <p>{{inventory.beer_label}}</p>
+        <p>{{inventory.beer_description}}</p>
+        <p>{{inventory.beer_style}}</p>
+    </div>
+</div>
