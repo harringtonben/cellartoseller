@@ -24,8 +24,6 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
                         });
                     });
                     $scope.inventory = myInventory;
-                    console.log($scope.inventory);
-                    console.log($scope.myProfile);
                 }).catch((error) => {
                     console.log("Error in getMyBeers", error);
                 });
@@ -42,7 +40,6 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
         let inventory = [];
         let beerList = [];
         let myInventory = [];
-        console.log($rootScope.receiverId);
         TradeService.getUserProfile($rootScope.receiverId).then((results) => {
             $scope.receiverProfile = results;
             TradeService.getUserInventory($rootScope.receiverId).then((results) => {
@@ -61,8 +58,6 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
                         });
                     });
                     $scope.receiverInventory = myInventory;
-                    console.log($scope.receiverInventory);
-                    console.log($scope.receiverProfile);
                 }).catch((error) => {
                     console.log("Error in getMyBeers", error);
                 });

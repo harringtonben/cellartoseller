@@ -76,5 +76,16 @@
     margin-top: 10px;
     margin-bottom: 10px; }
 
+.trade-profile {
+  background-color: #fff;
+  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px; }
+
+.profile-pic {
+  max-height: 100px;
+  max-width: 100px; }
+
 body {
   background-color: lightblue; }

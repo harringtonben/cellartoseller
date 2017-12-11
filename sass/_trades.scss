@@ -1,0 +1,14 @@
+@import 'variables';
+
+.trade-profile {
+    background-color: $white;
+    box-shadow: $boxshadow;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.profile-pic {
+    max-height: 100px;
+    max-width: 100px;
+}
