@@ -1,6 +1,6 @@
 'use strict';
 
-app.service("TradeService", function($http, $q, FIREBASE_CONFIG) {
+app.service("TradeService", function($http, $q, $rootScope, FIREBASE_CONFIG, AuthService) {
     const getUserInventory = (userId) => {
         let userInventory = [];
         return $q((resolve, reject) => {
@@ -53,5 +53,16 @@ app.service("TradeService", function($http, $q, FIREBASE_CONFIG) {
         });
     };
 
-    return {getUserBeers, getUserInventory, getUserProfile};
+    const createTradeObject = (beerData, formData) => {
+        return {
+            "beer_id" : beerData.id,
+            "for_trade" : beerData.for_trade,
+            "number_for_trade" : JSON.parse(beerData.number_for_trade) - JSON.parse(formData.numberToTrade),
+            "quantity" : JSON.parse(beerData.quantity) - JSON.parse(formData.numberToTrade),
+            "trade_id" : $rootScope.tradeId,
+            "uid" : AuthService.getCurrentUid()
+        };
+    };
+
+    return {createTradeObject, getUserBeers, getUserInventory, getUserProfile};
 });

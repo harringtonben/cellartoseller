@@ -18,13 +18,12 @@ app.controller("UsersCtrl", function($location, $rootScope, $scope, AuthService,
     $scope.startTrade = (receiverId) => {
         $rootScope.receiverId = receiverId;
         let trade = UserService.createTradeObject(AuthService.getCurrentUid(), receiverId);
-        console.log(trade);
-        // UserService.newTrade(trade).then((results) => {
-        //     console.log(results);
-        // }).catch((error) => {
-        //     console.log("Error in newTrade", error);
-        // });
-        // $location.path('/newtrade');
+        UserService.newTrade(trade).then((results) => {
+            $rootScope.tradeId = results.data.name;
+            $location.path('/newtrade');
+        }).catch((error) => {
+            console.log("Error in newTrade", error);
+        }); 
     };
 
 });

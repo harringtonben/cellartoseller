@@ -76,6 +76,13 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
     $scope.addToTrade = (beerData, formData) => {
         console.log("data from the form", formData);
         console.log("The beer to trade is", beerData);
+        let beerToTrade = TradeService.createTradeObject(beerData, formData);
+        console.log(beerToTrade);
+        // TradeService.addBeerToTrade().then((results) => {
+        //     console.log("resuts from addBeerToTrade", )
+        // }).catch((error) => {
+        //     console.log("Error in addBeerToTrade", error);
+        // });
     };
 
 });

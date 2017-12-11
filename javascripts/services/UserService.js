@@ -68,7 +68,7 @@ app.service("UserService", function($http, $q, FIREBASE_CONFIG) {
     };
 
     const newTrade = (trade) => {
-
+        return $http.post(`${FIREBASE_CONFIG.databaseURL}/trades.json`, JSON.stringify(trade));
     };
 
     return {createTradeObject, getAllUsers, getUserBeers, getUserInventory, getUserProfile, newTrade};
