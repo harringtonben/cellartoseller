@@ -64,5 +64,14 @@ app.service("TradeService", function($http, $q, $rootScope, FIREBASE_CONFIG, Aut
         };
     };
 
-    return {createTradeObject, getUserBeers, getUserInventory, getUserProfile};
+    const createTradeDataObject = (beerData, formData) => {
+        return {
+            "tradeid": $rootScope.tradeId,
+            "beerid": beerData.id,
+            "inventoryid": beerData.inventory_id,
+            "numberintrade": formData.numberToTrade
+        };
+    };
+
+    return {createTradeDataObject, createTradeObject, getUserBeers, getUserInventory, getUserProfile};
 });
