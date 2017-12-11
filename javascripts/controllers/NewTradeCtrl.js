@@ -81,7 +81,7 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
         console.log("beerToTrade", beerToTrade);
         console.log("tradeJoinItem", tradeJoinItem);
         TradeService.addBeerToTrade(tradeJoinItem).then((results) => {
-            TradeService.updateInventory(beerToTrade).then((results) => {
+            TradeService.updateInventory(beerToTrade, beerData.inventory_id).then((results) => {
                 console.log(results);
             }).catch((error) => {
                 console.log("error in updateInventory", error);

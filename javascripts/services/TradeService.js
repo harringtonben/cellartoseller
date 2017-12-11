@@ -78,5 +78,9 @@ app.service("TradeService", function($http, $q, $rootScope, FIREBASE_CONFIG, Aut
         return $http.post(`${FIREBASE_CONFIG.databaseURL}/tradesdata.json`, JSON.stringify(tradeItem));
     };
 
-    return {addBeerToTrade, createTradeDataObject, createTradeObject, getUserBeers, getUserInventory, getUserProfile};
+    const updateInventory = (beerData, inventoryId) => {
+        return $http.put(`${FIREBASE_CONFIG.databaseURL}/inventory/${inventoryId}.json`, JSON.stringify(beerData));
+    };
+
+    return {addBeerToTrade, createTradeDataObject, createTradeObject, getUserBeers, getUserInventory, getUserProfile, updateInventory};
 });
