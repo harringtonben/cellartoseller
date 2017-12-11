@@ -7,7 +7,15 @@
         <h4>Number for trade: {{trade.number_for_trade}}</h4>
         <p>{{trade.beer_style}}</p>
         <form name="ownerTrade">
-            
+            <div class="form-group">
+                <label for="numberToTrade">Add to trade:</label>
+                <div>
+                    <input type="text" id="numberToTrade" size="4" maxlength="4" ng-model="ownerTrade.numberToTrade" required>
+                </div>
+                <div>
+                    <button type="submit" class="btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="addToTrade(trade, ownerTrade)"></i></button>
+                </div>
+            </div>
         </form>
     </div>
 </div>

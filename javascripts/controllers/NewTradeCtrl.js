@@ -73,4 +73,9 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
     getMyInventory();
     getReceiverInventory();
 
+    $scope.addToTrade = (beerData, formData) => {
+        console.log("data from the form", formData);
+        console.log("The beer to trade is", beerData);
+    };
+
 });
