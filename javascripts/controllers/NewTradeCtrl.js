@@ -19,6 +19,7 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
                                 beer.number_for_trade = item.number_for_trade;
                                 beer.quantity = item.quantity;
                                 beer.inventory_id = item.id;
+                                beer.uid = item.uid;
                                 myInventory.push(beer);
                             }
                         });
@@ -53,6 +54,7 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
                                 beer.number_for_trade = item.number_for_trade;
                                 beer.quantity = item.quantity;
                                 beer.inventory_id = item.id;
+                                beer.uid = item.uid;
                                 myInventory.push(beer);
                             }
                         });
@@ -74,14 +76,16 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
     getReceiverInventory();
 
     $scope.addToTrade = (beerData, formData) => {
-        console.log("data from the form", formData);
-        console.log("The beer to trade is", beerData);
         let beerToTrade = TradeService.createTradeObject(beerData, formData);
         let tradeJoinItem = TradeService.createTradeDataObject(beerData, formData);
         console.log("beerToTrade", beerToTrade);
         console.log("tradeJoinItem", tradeJoinItem);
-        TradeService.addBeerToTrade().then((results) => {
-            console.log("resuts from addBeerToTrade", results);
+        TradeService.addBeerToTrade(tradeJoinItem).then((results) => {
+            TradeService.updateInventory(beerToTrade).then((results) => {
+                console.log(results);
+            }).catch((error) => {
+                console.log("error in updateInventory", error);
+            });
         }).catch((error) => {
             console.log("Error in addBeerToTrade", error);
         });
