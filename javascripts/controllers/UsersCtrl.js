@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("UsersCtrl", function($location, $rootScope, $scope, UserService) {
+app.controller("UsersCtrl", function($location, $rootScope, $scope, AuthService, UserService) {
     const getUsers = () => {
         UserService.getAllUsers().then((results) => {
             $scope.users = results;
@@ -17,7 +17,14 @@ app.controller("UsersCtrl", function($location, $rootScope, $scope, UserService)
 
     $scope.startTrade = (receiverId) => {
         $rootScope.receiverId = receiverId;
-        $location.path('/newtrade');
+        let trade = UserService.createTradeObject(AuthService.getCurrentUid(), receiverId);
+        console.log(trade);
+        // UserService.newTrade(trade).then((results) => {
+        //     console.log(results);
+        // }).catch((error) => {
+        //     console.log("Error in newTrade", error);
+        // });
+        // $location.path('/newtrade');
     };
 
 });
