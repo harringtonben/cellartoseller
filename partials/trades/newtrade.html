@@ -1,11 +1,23 @@
-<div class="myProfile col-xs-5">
+<div class="tradeProfile col-xs-5">
     <img ng-src="{{myProfile.picture}}" class="img-rounded">
-    <h1>{{myProfile.name}}'s Beers for Trade</h1>
-    <div ng-if="inventory.for_trade === 'true'" ng-repeat="trade in inventory">
-        <img ng-src="{{inventory.beer_label}}" alt="">
-        <h4>{{inventory.beer_name}}</h4>
-        <p>{{inventory.beer_label}}</p>
-        <p>{{inventory.beer_description}}</p>
-        <p>{{inventory.beer_style}}</p>
+    <h2>{{myProfile.name}}'s Beers for Trade</h2>
+    <div ng-if="trade.for_trade === 'true'" ng-repeat="trade in inventory">
+        <img ng-src="{{trade.beer_label}}" alt="">
+        <h4>{{trade.beer_name}}</h4>
+        <p>{{trade.beer_label}}</p>
+        <p>{{trade.beer_description}}</p>
+        <p>{{trade.beer_style}}</p>
     </div>
 </div>
+
+<div class="tradeProfile col-xs-5">
+        <img ng-src="{{receiverProfile.picture}}" class="img-rounded">
+        <h2>{{receiverProfile.name}}'s Beers for Trade</h2>
+        <div ng-if="trade2.for_trade === 'true'" ng-repeat="trade2 in receiverInventory">
+            <img ng-src="{{trade2.beer_label}}" alt="">
+            <h4>{{trade2.beer_name}}</h4>
+            <p>{{trade2.beer_label}}</p>
+            <p>{{trade2.beer_description}}</p>
+            <p>{{trade2.beer_style}}</p>
+        </div>
+    </div>
