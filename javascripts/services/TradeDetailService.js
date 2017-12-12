@@ -1,6 +1,24 @@
 'use strict';
 
 app.service("TradeDetailService", function ($http, $q, FIREBASE_CONFIG) {
+    const getInventory = () => {
+        let tradeInventory = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FIREBASE_CONFIG.databaseURL}/beers.json`).then((results) => {
+                let inventory = results.data;
+                if (inventory != null) {
+                 Object.keys(inventory).forEach((key) => {
+                     inventory[key].id = key;
+                     tradeInventory.push(inventory[key]);   
+                 });    
+                 } 
+                 resolve(tradeInventory);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    };
+
     const getTradeItems = (tradeId) => {
         let tradeItems = [];
         return $q((resolve, reject) => {
@@ -14,7 +32,7 @@ app.service("TradeDetailService", function ($http, $q, FIREBASE_CONFIG) {
                  } 
                  resolve(tradeItems);
             }).catch((error) => {
-                console.log("error in getTradeItems");
+                reject(error);
             });
         });
     };
@@ -41,5 +59,5 @@ app.service("TradeDetailService", function ($http, $q, FIREBASE_CONFIG) {
         return $http.get(`${FIREBASE_CONFIG.databaseURL}/trades/${tradeId}.json`);
     };
 
-    return {getTradeItems, getTradeUids, getTradeUsers};
+    return {getInventory, getTradeItems, getTradeUids, getTradeUsers};
 });

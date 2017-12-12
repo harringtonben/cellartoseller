@@ -16,6 +16,7 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
                                 tradeUsers.receiver_name = result.name;
                             }
                     });
+                    $scope.usersInTrade = tradeUsers;
                     tradeItems.forEach((item) => {
                         if (item.uid === tradeUsers.owner_id) {
                             ownerTrades.push(item);
@@ -23,8 +24,28 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
                             receiverTrades.push(item);
                         }
                     });
-                    console.log(ownerTrades);
-                    console.log(receiverTrades);
+                    $scope.ownerTradeItems = ownerTrades;
+                    $scope.receiverTradeItems = receiverTrades;
+                    TradeDetailService.getInventory($routeParams.id).then((results) => {
+                        results.forEach((result) => {
+                            $scope.ownerTradeItems.forEach((item) => {
+                                if (item.beerid === result.id) {
+                                    item.beer_name = result.beer_name;
+                                    item.brewery_name = result.brewery_name;
+                                }
+                            });
+                        });
+                        results.forEach((result) => {
+                            $scope.receiverTradeItems.forEach((item) => {
+                                if (item.beerid === result.id) {
+                                    item.beer_name = result.beer_name;
+                                    item.brewery_name = result.brewery_name;
+                                }
+                            });
+                        });
+                    }).catch((error) => {
+                        console.log("error in getInventory", error);
+                    });
                 }).catch((error) => {
                     console.log("error in getTradeUsers", error);
                 });
@@ -35,8 +56,6 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
             console.log("error in getTradeItems", error);
         });
     };
-
-    
 
     getTradeDetails();
 });
