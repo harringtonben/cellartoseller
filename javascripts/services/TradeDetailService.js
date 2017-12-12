@@ -11,10 +11,28 @@ app.service("TradeDetailService", function ($http, $q, FIREBASE_CONFIG) {
         };
     };
 
-    const getInventory = () => {
+    const getBeers = () => {
         let tradeInventory = [];
         return $q((resolve, reject) => {
             $http.get(`${FIREBASE_CONFIG.databaseURL}/beers.json`).then((results) => {
+                let inventory = results.data;
+                if (inventory != null) {
+                 Object.keys(inventory).forEach((key) => {
+                     inventory[key].id = key;
+                     tradeInventory.push(inventory[key]);   
+                 });    
+                 } 
+                 resolve(tradeInventory);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    };
+
+    const getInventory = () => {
+        let tradeInventory = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FIREBASE_CONFIG.databaseURL}/inventory.json`).then((results) => {
                 let inventory = results.data;
                 if (inventory != null) {
                  Object.keys(inventory).forEach((key) => {
@@ -85,5 +103,5 @@ app.service("TradeDetailService", function ($http, $q, FIREBASE_CONFIG) {
         return $http.put(`${FIREBASE_CONFIG.databaseURL}/inventory/${inventoryId}.json`, JSON.stringify(inventory));
     };
 
-    return {createTradeDataObject, getInventory, getTrade, getTradeInventory, getTradeItems, getTradeUids, getTradeUsers, updateTradeDetails, updateTradeInventory};
+    return {createTradeDataObject, getBeers, getInventory, getTrade, getTradeInventory, getTradeItems, getTradeUids, getTradeUsers, updateTradeDetails, updateTradeInventory};
 });

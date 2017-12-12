@@ -2,6 +2,7 @@
     <h2>{{usersInTrade.owner_name}}'s Beers for Trade</h2>
     <div class="trade-profile img-rounded" ng-repeat="trade in ownerTradeItems">
         <h4>{{trade.brewery_name}} {{trade.beer_name}}</h4>
+        <p>Number available for trade: {{trade.number_for_trade}}</p>
         <form name="ownerTrade">
             <div class="form-group">
                 <label for="numberToTrade">Trade Count:</label>
@@ -20,6 +21,7 @@
         <h2>{{usersInTrade.receiver_name}}'s Beers for Trade</h2>
         <div class="trade-profile img-rounded" ng-repeat="trade in receiverTradeItems">
             <h4>{{trade.brewery_name}} {{trade.beer_name}}</h4>
+            <p>Number available for trade: {{trade.number_for_trade}}</p>
             <form name="ownerTrade">
                 <div class="form-group">
                     <label for="numberToTrade">Trade Count:</label>
@@ -32,4 +34,7 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class="col-xs-12 text-center">
+        <button class="btn btn-primary" ng-click="finishTrade()">I'm done here</button>
     </div>

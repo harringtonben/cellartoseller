@@ -1,6 +1,10 @@
 'use strict';
 
-app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, TradeDetailService) {
+app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, $scope, TradeDetailService) {
+    $scope.finishTrade = () => {
+        $location.path("/profile");
+    };
+
     const getTradeDetails = () => {
         let ownerTrades = [];
         let receiverTrades = [];
@@ -10,11 +14,11 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
                 let tradeUsers = results.data;
                 TradeDetailService.getTradeUsers().then((results) => {
                     results.forEach((result) => {
-                            if (result.uid === tradeUsers.owner_id) {
-                                tradeUsers.owner_name = result.name;
-                            } else if (result.uid === tradeUsers.receiver_id) {
-                                tradeUsers.receiver_name = result.name;
-                            }
+                        if (result.uid === tradeUsers.owner_id) {
+                            tradeUsers.owner_name = result.name;
+                        } else if (result.uid === tradeUsers.receiver_id) {
+                            tradeUsers.receiver_name = result.name;
+                        }
                     });
                     $scope.usersInTrade = tradeUsers;
                     tradeItems.forEach((item) => {
@@ -26,7 +30,7 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
                     });
                     $scope.ownerTradeItems = ownerTrades;
                     $scope.receiverTradeItems = receiverTrades;
-                    TradeDetailService.getInventory($routeParams.id).then((results) => {
+                    TradeDetailService.getBeers($routeParams.id).then((results) => {
                         results.forEach((result) => {
                             $scope.ownerTradeItems.forEach((item) => {
                                 if (item.beerid === result.id) {
@@ -42,6 +46,24 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
                                     item.brewery_name = result.brewery_name;
                                 }
                             });
+                        });
+                        TradeDetailService.getInventory().then((results) => {
+                            results.forEach((result) => {
+                                $scope.ownerTradeItems.forEach((item) => {
+                                    if (item.beerid === result.beer_id) {
+                                        item.number_for_trade = result.number_for_trade;
+                                    }
+                                });
+                            });
+                            results.forEach((result) => {
+                                $scope.receiverTradeItems.forEach((item) => {
+                                    if (item.beerid === result.beer_id) {
+                                        item.number_for_trade = result.number_for_trade;
+                                    }
+                                });
+                            });
+                        }).catch((error) => {
+                            console.log("error in getInventory", error);
                         });
                     }).catch((error) => {
                         console.log("error in getInventory", error);
