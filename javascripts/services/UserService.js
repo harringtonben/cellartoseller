@@ -59,5 +59,17 @@ app.service("UserService", function($http, $q, FIREBASE_CONFIG) {
         });
     };
 
-    return {getAllUsers, getUserBeers, getUserInventory, getUserProfile};
+    const createTradeObject = (ownerId, receiverId) => {
+        return {
+            "is_accepted" : "",
+            "owner_id" : ownerId,
+            "receiver_id" : receiverId
+        };
+    };
+
+    const newTrade = (trade) => {
+        return $http.post(`${FIREBASE_CONFIG.databaseURL}/trades.json`, JSON.stringify(trade));
+    };
+
+    return {createTradeObject, getAllUsers, getUserBeers, getUserInventory, getUserProfile, newTrade};
 });

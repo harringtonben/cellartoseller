@@ -1,0 +1,61 @@
+<div class="col-xs-5">
+    <img ng-src="{{myProfile.picture}}" class="img-circle profile-pic">
+    <h2>{{myProfile.name}}'s Beers for Trade</h2>
+    <div ng-if="trade.for_trade === 'true'" class="trade-profile img-rounded" ng-repeat="trade in inventory">
+        <img ng-src="{{trade.beer_label}}" class="img-rounded" alt="">
+        <h4>{{trade.brewery_name}} {{trade.beer_name}}</h4>
+        <h4>Number for trade: {{trade.number_for_trade}}</h4>
+        <p>{{trade.beer_style}}</p>
+        <form name="ownerTrade">
+            <div class="form-group">
+                <label for="numberToTrade">Add to trade:</label>
+                <div>
+                    <input type="text" size="4" maxlength="4" ng-model="ownerTrade.numberToTrade" required>
+                </div>
+                <div>
+                    <button type="submit" class="btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="addToTrade(trade, ownerTrade)"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="col-xs-5 col-xs-offset-2">
+    <img ng-src="{{receiverProfile.picture}}" class="img-circle profile-pic">
+    <h2>{{receiverProfile.name}}'s Beers for Trade</h2>
+    <div ng-if="trade2.for_trade === 'true'" class="trade-profile img-rounded" ng-repeat="trade2 in receiverInventory">
+        <img ng-src="{{trade2.beer_label}}" class="img-round" alt="">
+        <h4>{{trade2.brewery_name}} {{trade2.beer_name}}</h4>
+        <h4>Number for trade: {{trade2.number_for_trade}}</h4>
+        <p>{{trade2.beer_style}}</p>
+        <form name="receiverTrade">
+            <div class="form-group">
+                <label for="numberToTrade">Add to trade:</label>
+                <div>
+                    <input type="text" size="4" maxlength="4" ng-model="receiverTrade.numberToTrade" required>
+                </div>
+                <div>
+                    <button type="submit" class="btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="receiverAddToTrade(trade2, receiverTrade)"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="col-xs-8 col-xs-offset-2 trade-profile img-rounded">
+        <div class="col-xs-5">
+            <h4>My Beers in trade</h4>
+            <div ng-repeat="item in myTradeInventory">
+                <p>{{item.brewery_name}} {{item.beer_name}}: {{item.numberintrade}}</p>
+            </div>   
+        </div>
+        <div class="col-xs-5 col-xs-offset-2">
+            <h4>{{receiverProfile.name}} Beers in trade</h4>
+            <div ng-repeat="item in receiverTradeInventory">
+                <p>{{item.brewery_name}} {{item.beer_name}}: {{item.numberintrade}}</p>
+            </div>   
+        </div>
+        <div class="col-xs-12 text-center">
+            <button class="btn btn-primary" ng-click="finishTrade()">I'm done here</button>
+        </div>
+</div>
