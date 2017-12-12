@@ -1,6 +1,11 @@
 'use strict';
 
 app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, TradeDetailService) {
+    const configureInventoryDifference = (oldNumber, newNumber) => {
+        console.log("oldNumber", oldNumber);
+        console.log("newNumber", newNumber);
+    };
+
     const getTradeDetails = () => {
         let ownerTrades = [];
         let receiverTrades = [];
@@ -60,13 +65,20 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
     getTradeDetails();
 
     $scope.updateTrade = (trade) => {
+        let oldTradeNumber;
         let updatedTradeData = TradeDetailService.createTradeDataObject(trade);
-        console.log(updatedTradeData);
-        console.log(trade);
-        TradeDetailService.updateTradeDetails(updatedTradeData, trade.id).then((results) => {
-            console.log(results);
+        let newTradeNumber = JSON.parse(updatedTradeData.numberintrade);
+        TradeDetailService.getTrade(trade.id).then((results) => {
+            oldTradeNumber = JSON.parse(results.data.numberintrade);
+            let inventoryAdjustment = configureInventoryDifference(oldTradeNumber, newTradeNumber);
+            // TradeDetailService.updateTradeDetails(updatedTradeData, trade.id).then((results) => {
+            //     console.log(results);
+            // }).catch((error) => {
+            //     console.log("error in updateTradeDetails", error);
+            // });
         }).catch((error) => {
-            console.log("error in updateTradeDetails", error);
+            console.log("error in getTrade", error);
         });
+           
     };
 });

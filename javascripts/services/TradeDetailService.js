@@ -29,6 +29,10 @@ app.service("TradeDetailService", function ($http, $q, FIREBASE_CONFIG) {
         });
     };
 
+    const getTrade = (tradeId) => {
+        return $http.get(`${FIREBASE_CONFIG.databaseURL}/tradesdata/${tradeId}.json`);
+    };
+
     const getTradeItems = (tradeId) => {
         let tradeItems = [];
         return $q((resolve, reject) => {
@@ -73,5 +77,5 @@ app.service("TradeDetailService", function ($http, $q, FIREBASE_CONFIG) {
         return $http.put(`${FIREBASE_CONFIG.databaseURL}/tradesdata/${tradeId}.json`, JSON.stringify(tradeData));
     };
 
-    return {createTradeDataObject, getInventory, getTradeItems, getTradeUids, getTradeUsers, updateTradeDetails};
+    return {createTradeDataObject, getInventory, getTrade, getTradeItems, getTradeUids, getTradeUsers, updateTradeDetails};
 });
