@@ -64,8 +64,8 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileSe
     getInventory();
     getTrades();
     
-    $scope.updateInventory = (itemId) => {
-        $location.path(`/inventory/${itemId}`);
+    $scope.editTrade = (tradeId) => {
+        $location.path(`/trades/${tradeId}`);
     };
 
     $scope.deleteInventory = (inventoryId) => {
@@ -75,4 +75,9 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileSe
             console.log("error in deleteInventory", error);
         });
     };
+
+    $scope.updateInventory = (itemId) => {
+        $location.path(`/inventory/${itemId}`);
+    };
+
 });
