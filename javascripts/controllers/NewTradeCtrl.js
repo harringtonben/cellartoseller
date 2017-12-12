@@ -76,7 +76,7 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
     getReceiverInventory();
 
     $scope.addToTrade = (beerData, formData) => {
-        let beerToTrade = TradeService.createTradeObject(beerData, formData);
+        let beerToTrade = TradeService.createTradeObject(beerData, formData, AuthService.getCurrentUid());
         let tradeJoinItem = TradeService.createTradeDataObject(beerData, formData);
         TradeService.addBeerToTrade(tradeJoinItem).then((results) => {
             TradeService.updateInventory(beerToTrade, beerData.inventory_id).then((results) => {
@@ -84,7 +84,29 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
                     let tradeItems = results;
                     getMyInventory();
                     getReceiverInventory();
-                    let currentTradeData = getTradeData(tradeItems);
+                    getTradeData(tradeItems);
+                }).catch((error) => {
+                    console.log("error in getBeersInTrade", error);
+                });
+            }).catch((error) => {
+                console.log("error in updateInventory", error);
+            });
+        }).catch((error) => {
+            console.log("Error in addBeerToTrade", error);
+        });
+    };
+
+    $scope.receiverAddToTrade = (beerData, formData) => {
+        console.log(beerData);
+        let beerToTrade = TradeService.createTradeObject(beerData, formData, $rootScope.receiverId);
+        let tradeJoinItem = TradeService.createTradeDataObject(beerData, formData);
+        TradeService.addBeerToTrade(tradeJoinItem).then((results) => {
+            TradeService.updateInventory(beerToTrade, beerData.inventory_id).then((results) => {
+                TradeService.getBeersInTrade($rootScope.tradeId).then((results) => {
+                    let tradeItems = results;
+                    getMyInventory();
+                    getReceiverInventory();
+                    getTradeData(tradeItems);
                 }).catch((error) => {
                     console.log("error in getBeersInTrade", error);
                 });
@@ -101,20 +123,22 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
         let receiverInventoryInTrade = [];
         tradeItems.forEach((item) => {
             $scope.inventory.forEach((ownerItem) => {
-                $scope.receiverInventory.forEach((receiverItem) => {
-                    if (item.beerid === ownerItem.id) {
-                        item.beer_name = ownerItem.beer_name;
-                        myInventoryInTrade.push(item);
-                    } else if (item.beerid === receiverItem.id) {
-                        item.beer_name = receiverItem.beer_name;
-                        receiverInventoryInTrade.push(item);
-                    }   
-                });
+                if (item.beerid === ownerItem.id) {
+                    item.beer_name = ownerItem.beer_name;
+                    item.brewery_name = ownerItem.brewery_name;
+                    myInventoryInTrade.push(item);
+                } 
+            });
+            $scope.receiverInventory.forEach((receiverItem) => {
+                if (item.beerid === receiverItem.id) {
+                    item.beer_name = receiverItem.beer_name;
+                    item.brewery_name = receiverItem.brewery_name;
+                    receiverInventoryInTrade.push(item);
+                }   
             });
         });
-
-        console.log("myInventoryInTrade", myInventoryInTrade);
-        console.log("receiverInventoryInTrade", receiverInventoryInTrade);
+        $scope.myTradeInventory = myInventoryInTrade;
+        $scope.receiverTradeInventory = receiverInventoryInTrade;       
     };
 
 });

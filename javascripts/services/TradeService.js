@@ -53,14 +53,14 @@ app.service("TradeService", function($http, $q, $rootScope, FIREBASE_CONFIG, Aut
         });
     };
 
-    const createTradeObject = (beerData, formData) => {
+    const createTradeObject = (beerData, formData, userId) => {
         return {
             "beer_id" : beerData.id,
             "for_trade" : beerData.for_trade,
             "number_for_trade" : JSON.parse(beerData.number_for_trade) - JSON.parse(formData.numberToTrade),
             "quantity" : JSON.parse(beerData.quantity) - JSON.parse(formData.numberToTrade),
             "trade_id" : $rootScope.tradeId,
-            "uid" : AuthService.getCurrentUid()
+            "uid" : userId
         };
     };
 
