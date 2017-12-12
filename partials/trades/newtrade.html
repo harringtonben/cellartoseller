@@ -21,12 +21,25 @@
 </div>
 
 <div class="col-xs-5 col-xs-offset-2">
-        <img ng-src="{{receiverProfile.picture}}" class="img-circle profile-pic">
-        <h2>{{receiverProfile.name}}'s Beers for Trade</h2>
-        <div ng-if="trade2.for_trade === 'true'" class="trade-profile img-rounded" ng-repeat="trade2 in receiverInventory">
-            <img ng-src="{{trade2.beer_label}}" class="img-round" alt="">
-            <h4>{{trade2.brewery_name}} {{trade2.beer_name}}</h4>
-            <h4>Number for trade: {{trade2.number_for_trade}}</h4>
-            <p>{{trade2.beer_style}}</p>
+    <img ng-src="{{receiverProfile.picture}}" class="img-circle profile-pic">
+    <h2>{{receiverProfile.name}}'s Beers for Trade</h2>
+    <div ng-if="trade2.for_trade === 'true'" class="trade-profile img-rounded" ng-repeat="trade2 in receiverInventory">
+        <img ng-src="{{trade2.beer_label}}" class="img-round" alt="">
+        <h4>{{trade2.brewery_name}} {{trade2.beer_name}}</h4>
+        <h4>Number for trade: {{trade2.number_for_trade}}</h4>
+        <p>{{trade2.beer_style}}</p>
+    </div>
+</div>
+
+<div class="col-xs-8 col-xs-offset-2 trade-profile img-rounded">
+    <div>
+        <div>
+            <h4>My Beers in trade</h4>
+            <div ng-repeat="item in currentTradeItems" ng-if="item.uid === myProfile.uid">
+                <div ng-repeat="beer in inventory">
+                    <p ng-if="beer.beer_id === item.beerid">{{beer.brewery_name}} {{beer.beer_name}}: {{item.numberintrade}}</p>
+                </div>
+            </div>
         </div>
     </div>
+</div>
