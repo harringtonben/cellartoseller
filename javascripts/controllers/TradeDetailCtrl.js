@@ -58,4 +58,15 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
     };
 
     getTradeDetails();
+
+    $scope.updateTrade = (trade) => {
+        let updatedTradeData = TradeDetailService.createTradeDataObject(trade);
+        console.log(updatedTradeData);
+        console.log(trade);
+        TradeDetailService.updateTradeDetails(updatedTradeData, trade.id).then((results) => {
+            console.log(results);
+        }).catch((error) => {
+            console.log("error in updateTradeDetails", error);
+        });
+    };
 });
