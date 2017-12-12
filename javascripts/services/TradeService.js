@@ -82,5 +82,23 @@ app.service("TradeService", function($http, $q, $rootScope, FIREBASE_CONFIG, Aut
         return $http.put(`${FIREBASE_CONFIG.databaseURL}/inventory/${inventoryId}.json`, JSON.stringify(beerData));
     };
 
-    return {addBeerToTrade, createTradeDataObject, createTradeObject, getUserBeers, getUserInventory, getUserProfile, updateInventory};
+    const getBeersInTrade = (tradeId) => {
+        let tradeData = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FIREBASE_CONFIG.databaseURL}/tradesdata.json?orderBy="tradeid"&equalTo="${tradeId}"`).then((results) => {
+                let tradeItems = results.data;
+                if (tradeItems != null) {
+                 Object.keys(tradeItems).forEach((key) => {
+                    tradeItems[key].id = key;
+                     tradeData.push(tradeItems[key]);   
+                 });    
+                 } 
+                 resolve(tradeData);
+            }).catch((error) => {
+                console.log("error in getBeersInTrade", error);
+            });
+        });
+    };
+
+    return {addBeerToTrade, createTradeDataObject, createTradeObject, getBeersInTrade, getUserBeers, getUserInventory, getUserProfile, updateInventory};
 });

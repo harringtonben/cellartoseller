@@ -78,11 +78,13 @@ app.controller("NewTradeCtrl", function($rootScope, $scope, AuthService, TradeSe
     $scope.addToTrade = (beerData, formData) => {
         let beerToTrade = TradeService.createTradeObject(beerData, formData);
         let tradeJoinItem = TradeService.createTradeDataObject(beerData, formData);
-        console.log("beerToTrade", beerToTrade);
-        console.log("tradeJoinItem", tradeJoinItem);
         TradeService.addBeerToTrade(tradeJoinItem).then((results) => {
             TradeService.updateInventory(beerToTrade, beerData.inventory_id).then((results) => {
-                console.log(results);
+                TradeService.getBeersInTrade($rootScope.tradeId).then((results) => {
+                    console.log(results);
+                }).catch((error) => {
+                    console.log("error in getBeersInTrade", error);
+                });
             }).catch((error) => {
                 console.log("error in updateInventory", error);
             });
