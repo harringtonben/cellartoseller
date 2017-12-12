@@ -67,13 +67,34 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
         TradeDetailService.getTrade(trade.id).then((results) => {
             oldTradeNumber = JSON.parse(results.data.numberintrade);
             TradeDetailService.updateTradeDetails(updatedTradeData, trade.id).then((results) => {
-                getTradeDetails();
                 if (oldTradeNumber > newTradeNumber) {
                     updatedNumber = oldTradeNumber - newTradeNumber;
-                    console.log("old number is greater", updatedNumber);
+                    TradeDetailService.getTradeInventory(trade.inventoryid).then((results) => {
+                        let inventoryObject = results.data;
+                        inventoryObject.quantity = JSON.parse(inventoryObject.quantity) + updatedNumber;
+                        inventoryObject.number_for_trade = JSON.parse(inventoryObject.number_for_trade) + updatedNumber;
+                        TradeDetailService.updateTradeInventory(inventoryObject, trade.inventoryid).then((results) => {
+                            getTradeDetails();
+                        }).catch((error) => {
+                            console.log("error in updateTradeInventory", error);
+                        });
+                    }).catch((error) => {
+                        console.log("error in getTradeInventory", error);
+                    });
                 } else if (newTradeNumber > oldTradeNumber) {
                     updatedNumber = newTradeNumber - oldTradeNumber;
-                    console.log("new number is greater", updatedNumber);
+                    TradeDetailService.getTradeInventory(trade.inventoryid).then((results) => {
+                        let inventoryObject = results.data;
+                        inventoryObject.quantity = JSON.parse(inventoryObject.quantity) - updatedNumber;
+                        inventoryObject.number_for_trade = JSON.parse(inventoryObject.number_for_trade) - updatedNumber;
+                        TradeDetailService.updateTradeInventory(inventoryObject, trade.inventoryid).then((results) => {
+                            getTradeDetails();
+                        }).catch((error) => {
+                            console.log("error in updateTradeInventory", error);
+                        });
+                    }).catch((error) => {
+                        console.log("error in getTradeInventory", error);
+                    });
                 }
             }).catch((error) => {
                 console.log("error in updateTradeDetails", error);
