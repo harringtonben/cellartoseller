@@ -2,6 +2,8 @@
 
 app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, TradeDetailService) {
     const getTradeDetails = () => {
+        let ownerTrades = [];
+        let receiverTrades = [];
         TradeDetailService.getTradeItems($routeParams.id).then((results) => {
             let tradeItems = results;
             TradeDetailService.getTradeUids($routeParams.id).then((results) => {
@@ -14,7 +16,15 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
                                 tradeUsers.receiver_name = result.name;
                             }
                     });
-                    console.log(tradeUsers);
+                    tradeItems.forEach((item) => {
+                        if (item.uid === tradeUsers.owner_id) {
+                            ownerTrades.push(item);
+                        } else if (item.uid === tradeUsers.receiver_id) {
+                            receiverTrades.push(item);
+                        }
+                    });
+                    console.log(ownerTrades);
+                    console.log(receiverTrades);
                 }).catch((error) => {
                     console.log("error in getTradeUsers", error);
                 });
