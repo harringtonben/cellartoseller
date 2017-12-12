@@ -124,7 +124,6 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $scope, AuthServi
     };
 
     $scope.receiverAddToTrade = (beerData, formData) => {
-        console.log(beerData);
         let beerToTrade = TradeService.createTradeObject(beerData, formData, $rootScope.receiverId);
         let tradeJoinItem = TradeService.createTradeDataObject(beerData, formData);
         TradeService.addBeerToTrade(tradeJoinItem).then((results) => {

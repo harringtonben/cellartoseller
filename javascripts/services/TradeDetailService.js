@@ -29,6 +29,10 @@ app.service("TradeDetailService", function ($http, $q, FIREBASE_CONFIG) {
         });
     };
 
+    const deleteTradeData = (dataId) => {
+        return $http.delete(`${FIREBASE_CONFIG.databaseURL}/tradesdata/${dataId}.json`);
+    };
+
     const getInventory = () => {
         let tradeInventory = [];
         return $q((resolve, reject) => {
@@ -103,5 +107,5 @@ app.service("TradeDetailService", function ($http, $q, FIREBASE_CONFIG) {
         return $http.put(`${FIREBASE_CONFIG.databaseURL}/inventory/${inventoryId}.json`, JSON.stringify(inventory));
     };
 
-    return {createTradeDataObject, getBeers, getInventory, getTrade, getTradeInventory, getTradeItems, getTradeUids, getTradeUsers, updateTradeDetails, updateTradeInventory};
+    return {createTradeDataObject, deleteTradeData, getBeers, getInventory, getTrade, getTradeInventory, getTradeItems, getTradeUids, getTradeUsers, updateTradeDetails, updateTradeInventory};
 });

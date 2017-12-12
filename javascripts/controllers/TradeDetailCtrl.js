@@ -1,6 +1,25 @@
 'use strict';
 
 app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, $scope, TradeDetailService) {
+    $scope.deleteItem = (item) => {
+        TradeDetailService.getTradeInventory(item.inventoryid).then((results) => {
+            let inventoryToUpdate = results.data;
+            inventoryToUpdate.quantity = inventoryToUpdate.quantity + JSON.parse(item.numberintrade);
+            inventoryToUpdate.number_for_trade = inventoryToUpdate.number_for_trade + JSON.parse(item.numberintrade); 
+            TradeDetailService.updateTradeInventory(inventoryToUpdate).then((results) => {
+                TradeDetailService.deleteTradeData(item.id).then((results) => {
+                    console.log(results);
+                }).catch((error) => {
+                    console.log("error in deleteTradeData", error);
+                });
+            }).catch((error) => {
+                console.log("error in updateTradeInventory", error);
+            });
+        }).catch((error) => {
+            console.log("error in getTradeInventory", error);
+        });
+    };
+
     $scope.finishTrade = () => {
         $location.path("/profile");
     };

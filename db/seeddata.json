@@ -780,9 +780,10 @@
     }
   },
   "tradesdata": {
-    "tradeid": "0",
+    "trade0": {"tradeid": "0",
     "beerid": "-L-r45wO6RDQF1fz-5No",
     "inventoryid": "-L-r4AEWXfA9X7uDWbTn",
     "numberintrade": "5"
+    }
   }
 }
