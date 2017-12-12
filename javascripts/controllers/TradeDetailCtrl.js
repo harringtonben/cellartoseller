@@ -1,11 +1,6 @@
 'use strict';
 
 app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, TradeDetailService) {
-    const configureInventoryDifference = (oldNumber, newNumber) => {
-        console.log("oldNumber", oldNumber);
-        console.log("newNumber", newNumber);
-    };
-
     const getTradeDetails = () => {
         let ownerTrades = [];
         let receiverTrades = [];
@@ -66,16 +61,23 @@ app.controller("TradeDetailCtrl", function($rootScope, $routeParams, $scope, Tra
 
     $scope.updateTrade = (trade) => {
         let oldTradeNumber;
+        let updatedNumber;
         let updatedTradeData = TradeDetailService.createTradeDataObject(trade);
         let newTradeNumber = JSON.parse(updatedTradeData.numberintrade);
         TradeDetailService.getTrade(trade.id).then((results) => {
             oldTradeNumber = JSON.parse(results.data.numberintrade);
-            let inventoryAdjustment = configureInventoryDifference(oldTradeNumber, newTradeNumber);
-            // TradeDetailService.updateTradeDetails(updatedTradeData, trade.id).then((results) => {
-            //     console.log(results);
-            // }).catch((error) => {
-            //     console.log("error in updateTradeDetails", error);
-            // });
+            TradeDetailService.updateTradeDetails(updatedTradeData, trade.id).then((results) => {
+                getTradeDetails();
+                if (oldTradeNumber > newTradeNumber) {
+                    updatedNumber = oldTradeNumber - newTradeNumber;
+                    console.log("old number is greater", updatedNumber);
+                } else if (newTradeNumber > oldTradeNumber) {
+                    updatedNumber = newTradeNumber - oldTradeNumber;
+                    console.log("new number is greater", updatedNumber);
+                }
+            }).catch((error) => {
+                console.log("error in updateTradeDetails", error);
+            });
         }).catch((error) => {
             console.log("error in getTrade", error);
         });
