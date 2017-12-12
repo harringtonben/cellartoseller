@@ -81,5 +81,9 @@ app.config(function($routeProvider) {
         templateUrl: 'partials/trades/newtrade.html',
         controller: 'NewTradeCtrl'
     })
+    .when("/trades/:id", {
+        templateUrl: 'partials/trades/tradedetail.html',
+        controller: 'TradeDetailCtrl'
+    })
     .otherwise("/auth");
 });

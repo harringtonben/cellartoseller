@@ -17,7 +17,6 @@ app.controller("InventoryCtrl", function($location, $routeParams, $scope, Invent
             console.log("error in updateInventory", error);
         });
     };
-   
 
     getInventoryDetail();
 });
