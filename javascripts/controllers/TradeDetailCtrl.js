@@ -22,7 +22,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                 let inventoryItem = results.data; 
                 inventoryItem.quantity = JSON.parse(inventoryItem.quantity) + JSON.parse(item.numberintrade);
                 inventoryItem.number_for_trade = JSON.parse(inventoryItem.number_for_trade) + JSON.parse(item.numberintrade);
-                TradeDetailService.updateTrade(inventoryItem, item.inventoryid).then((results) => {
+                TradeDetailService.updateTradeInventory(inventoryItem, item.inventoryid).then((results) => {
                     TradeDetailService.deleteTradeData(item.id).then(() => {
                         TradeDetailService.deleteTrade(item.tradeid).then(() => {
                             $location.path("/profile");
@@ -47,7 +47,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                 let inventoryItem = results.data; 
                 inventoryItem.quantity = JSON.parse(inventoryItem.quantity) + JSON.parse(item.numberintrade);
                 inventoryItem.number_for_trade = JSON.parse(inventoryItem.number_for_trade) + JSON.parse(item.numberintrade);
-                TradeDetailService.updateTrade(inventoryItem, item.inventoryid).then((results) => {
+                TradeDetailService.updateTradeInventory(inventoryItem, item.inventoryid).then((results) => {
                     TradeDetailService.deleteTradeData(item.id).then(() => {
                         deleteReceiverTrades(receiverItems);
                     }).catch((error) => {
