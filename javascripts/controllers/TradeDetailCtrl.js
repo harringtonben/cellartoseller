@@ -1,6 +1,21 @@
 'use strict';
 
 app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, $scope, TradeDetailService) {
+    $scope.acceptTrade = (trade) => {
+        TradeDetailService.getTradeUids(trade[0].tradeid).then((results) => {
+            let acceptedTrade = results.data;
+            acceptedTrade.is_accepted = "true";
+            TradeDetailService.updateTrade(acceptedTrade, trade[0].tradeid).then((results) => {
+                $location.path("/profile");
+            }).catch((error) => {
+                console.log("error in updateTrade", error);
+            });
+
+        }).catch((error) => {
+            console.log("error in getTradeUids", error);
+        });
+    };
+
     $scope.deleteItem = (item) => {
         TradeDetailService.getTradeInventory(item.inventoryid).then((results) => {
             let inventoryToUpdate = results.data;
