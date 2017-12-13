@@ -8,3 +8,34 @@
 body {
     background-color: $background-color;
 }
+
+.btn {
+    background-color: $button-color;
+    color: $white;   
+}
+
+.btn:hover {
+    background-color: $button-hover;
+    color: $white;
+}
+
+.navbar {
+    background-color: $darkgreen;
+
+        #navlinks {
+            a {
+                color: $white;
+            } 
+
+            li:hover {
+                background-color: $navbar-hover;
+            }
+        }
+}
+
+.logo {
+    height: 300px;
+    width: 500px;
+    margin-bottom: 20px;
+}
+

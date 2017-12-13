@@ -35,7 +35,7 @@
                     <input type="text" size="4" maxlength="4" ng-model="receiverTrade.numberToTrade" required>
                 </div>
                 <div>
-                    <button type="submit" class="btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="receiverAddToTrade(trade2, receiverTrade)"></i></button>
+                    <button type="submit" class="add-to-trade btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="receiverAddToTrade(trade2, receiverTrade)"></i></button>
                 </div>
             </div>
         </form>
@@ -56,6 +56,6 @@
             </div>   
         </div>
         <div class="col-xs-12 text-center">
-            <button class="btn btn-primary" ng-click="finishTrade()">I'm done here</button>
+            <button class="btn btn-default" ng-click="finishTrade()">I'm done here</button>
         </div>
 </div>

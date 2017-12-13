@@ -1,7 +1,7 @@
-<div>
-    <div class="inventory col-xs-4">
+<div class="col-xs-10 col-xs-offset-1">
+    <div class="inventory img-rounded col-xs-5">
         <h4>My Cellar</h4>
-        <div class="item img-rounded col-xs-11" ng-repeat="item in inventory">
+        <div class="item col-xs-11" ng-repeat="item in inventory">
             <button class="btn btn-md btn-default delete" ng-click="deleteInventory(item.inventory_id)"><i class="fa fa-trash-o"></i></button>
             <div ng-click="updateInventory(item.inventory_id)">
                 <p>{{item.brewery_name}} {{item.beer_name}}</p>
@@ -11,9 +11,9 @@
         </div>
     </div>
 
-    <div class="col-xs-6 col-xs-offset-2">
+    <div class=" inventory img-rounded col-xs-5 col-xs-offset-1">
         <h4>Active Trades</h4>
-        <div class="item img-rounded col-xs-11" ng-repeat="trade in trades">
+        <div class="item col-xs-11" ng-repeat="trade in trades">
             <div ng-click="editTrade(trade.id)">
                 <p>Trade Owner: {{trade.owner_name}}</p>
                 <p>Trade Receiver: {{trade.receiver_name}}</p>

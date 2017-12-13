@@ -1,29 +1,33 @@
 @import 'variables';
 
-.item {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: $white;
-    font-size: 12px;
-    padding: 12px;
+.inventory {
     box-shadow: $boxshadow;
-    position: relative;
-
-        .delete {
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            background: transparent;
-            border: 0px;
-            color: $black;
-        }
-
-        p {
-            margin: 0;
-        }
+    background-color: $white;
+   
+    .item {
+        border-bottom: 1px solid $border-color;
+        font-size: 12px;
+        padding: 12px;
+        position: relative;
+            .delete {
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                background: transparent;
+                border: 0px;
+                color: $black;
+            }
+    
+            p {
+                margin: 0;
+            }
+            
+    }
 }
 
-.item:hover {
-    box-shadow: $boxshadow-hover;
-    margin-bottom: 15px;
+.item:last-child {
+    border: none;
 }
+
+
+

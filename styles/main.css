@@ -7,7 +7,7 @@
   background-color: #fff;
   font-size: 12px;
   padding: 12px;
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75); }
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75); }
   .beer-search-return img {
     height: 50px;
     width: 50px; }
@@ -18,34 +18,33 @@
     border: none;
     color: #000; }
 
-.item {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: #fff;
-  font-size: 12px;
-  padding: 12px;
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
-  position: relative; }
-  .item .delete {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    background: transparent;
-    border: 0px;
-    color: #000; }
-  .item p {
-    margin: 0; }
+.inventory {
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75);
+  background-color: #fff; }
+  .inventory .item {
+    border-bottom: 1px solid #aa863a;
+    font-size: 12px;
+    padding: 12px;
+    position: relative; }
+    .inventory .item .delete {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      background: transparent;
+      border: 0px;
+      color: #000; }
+    .inventory .item p {
+      margin: 0; }
 
-.item:hover {
-  box-shadow: 5px 10px 15px -1px rgba(0, 0, 0, 0.75);
-  margin-bottom: 15px; }
+.item:last-child {
+  border: none; }
 
 .users img {
   height: 100px;
   width: 100px; }
 
 .thumbnail {
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75);
   padding: 20px; }
 
 .search {
@@ -60,7 +59,7 @@
   margin-top: 50px;
   background-color: #fff;
   padding: 10px;
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75); }
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75); }
   .user-inventory .beer {
     padding: 10px; }
     .user-inventory .beer .beer-label {
@@ -72,13 +71,13 @@
   .beer-trades .user-trades {
     background-color: #fff;
     padding: 10px;
-    box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75);
     margin-top: 10px;
     margin-bottom: 10px; }
 
 .trade-profile {
   background-color: #fff;
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75);
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px; }
@@ -89,7 +88,28 @@
 
 .submit-trade {
   background: transparent;
-  border: 0px; }
+  border: 0px;
+  margin-top: 10px; }
 
 body {
-  background-color: lightblue; }
+  background-color: #f0eceb; }
+
+.btn {
+  background-color: #729f98;
+  color: #fff; }
+
+.btn:hover {
+  background-color: #8CB9B2;
+  color: #fff; }
+
+.navbar {
+  background-color: #283018; }
+  .navbar #navlinks a {
+    color: #fff; }
+  .navbar #navlinks li:hover {
+    background-color: #424A32; }
+
+.logo {
+  height: 300px;
+  width: 500px;
+  margin-bottom: 20px; }
