@@ -6,9 +6,9 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
             let inventoryToUpdate = results.data;
             inventoryToUpdate.quantity = inventoryToUpdate.quantity + JSON.parse(item.numberintrade);
             inventoryToUpdate.number_for_trade = inventoryToUpdate.number_for_trade + JSON.parse(item.numberintrade); 
-            TradeDetailService.updateTradeInventory(inventoryToUpdate).then((results) => {
+            TradeDetailService.updateTradeInventory(inventoryToUpdate, item.inventoryid).then((results) => {
                 TradeDetailService.deleteTradeData(item.id).then((results) => {
-                    console.log(results);
+                    getTradeDetails();
                 }).catch((error) => {
                     console.log("error in deleteTradeData", error);
                 });
