@@ -18,27 +18,26 @@
     border: none;
     color: #000; }
 
-.item {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: #fff;
-  font-size: 12px;
-  padding: 12px;
+.inventory {
   box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75);
-  position: relative; }
-  .item .delete {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    background: transparent;
-    border: 0px;
-    color: #000; }
-  .item p {
-    margin: 0; }
+  background-color: #fff; }
+  .inventory .item {
+    border-bottom: 1px solid #aa863a;
+    font-size: 12px;
+    padding: 12px;
+    position: relative; }
+    .inventory .item .delete {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      background: transparent;
+      border: 0px;
+      color: #000; }
+    .inventory .item p {
+      margin: 0; }
 
-.item:hover {
-  box-shadow: 3px 4px 8px -1px rgba(0, 0, 0, 0.75);
-  margin-bottom: 15px; }
+.item:last-child {
+  border: none; }
 
 .users img {
   height: 100px;
@@ -89,7 +88,8 @@
 
 .submit-trade {
   background: transparent;
-  border: 0px; }
+  border: 0px;
+  margin-top: 10px; }
 
 body {
   background-color: #f0eceb; }
@@ -108,3 +108,8 @@ body {
     color: #fff; }
   .navbar #navlinks li:hover {
     background-color: #424A32; }
+
+.logo {
+  height: 300px;
+  width: 500px;
+  margin-bottom: 20px; }
