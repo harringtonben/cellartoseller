@@ -7,7 +7,7 @@
   background-color: #fff;
   font-size: 12px;
   padding: 12px;
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75); }
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75); }
   .beer-search-return img {
     height: 50px;
     width: 50px; }
@@ -24,7 +24,7 @@
   background-color: #fff;
   font-size: 12px;
   padding: 12px;
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75);
   position: relative; }
   .item .delete {
     position: absolute;
@@ -37,7 +37,7 @@
     margin: 0; }
 
 .item:hover {
-  box-shadow: 5px 10px 15px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 4px 8px -1px rgba(0, 0, 0, 0.75);
   margin-bottom: 15px; }
 
 .users img {
@@ -45,7 +45,7 @@
   width: 100px; }
 
 .thumbnail {
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75);
   padding: 20px; }
 
 .search {
@@ -60,7 +60,7 @@
   margin-top: 50px;
   background-color: #fff;
   padding: 10px;
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75); }
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75); }
   .user-inventory .beer {
     padding: 10px; }
     .user-inventory .beer .beer-label {
@@ -72,13 +72,13 @@
   .beer-trades .user-trades {
     background-color: #fff;
     padding: 10px;
-    box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75);
     margin-top: 10px;
     margin-bottom: 10px; }
 
 .trade-profile {
   background-color: #fff;
-  box-shadow: 1px 7px 40px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 2px 6px -1px rgba(0, 0, 0, 0.75);
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px; }
@@ -92,4 +92,19 @@
   border: 0px; }
 
 body {
-  background-color: lightblue; }
+  background-color: #f0eceb; }
+
+.btn {
+  background-color: #729f98;
+  color: #fff; }
+
+.btn:hover {
+  background-color: #8CB9B2;
+  color: #fff; }
+
+.navbar {
+  background-color: #283018; }
+  .navbar #navlinks a {
+    color: #fff; }
+  .navbar #navlinks li:hover {
+    background-color: #424A32; }
