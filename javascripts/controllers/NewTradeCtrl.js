@@ -1,14 +1,26 @@
 'use strict';
 
-app.controller("NewTradeCtrl", function($location, $rootScope, $scope, AuthService, TradeService) {
-    const getMyInventory = () => {
+app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $scope, AuthService, TradeService) {
+    const getTradeDetails = () => {
+        TradeService.getTradeInfo($routeParams.id).then((results) => {
+            let tradeInfo = results.data;
+            getMyInventory(tradeInfo.owner_id);
+            getReceiverInventory(tradeInfo.receiver_id);
+        }).catch((error) => {
+
+        });
+    };
+
+    getTradeDetails();
+
+    const getMyInventory = (ownerId) => {
         let inventory = [];
         let beerList = [];
         let myInventory = [];
         let profile = [];
-        TradeService.getUserProfile(AuthService.getCurrentUid()).then((results) => {
+        TradeService.getUserProfile(ownerId).then((results) => {
             $scope.myProfile = results;
-            TradeService.getUserInventory(AuthService.getCurrentUid()).then((results) => {
+            TradeService.getUserInventory(ownerId).then((results) => {
                 inventory = results;
                 TradeService.getUserBeers().then((results) => {
                     beerList = results;
@@ -37,13 +49,13 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $scope, AuthServi
         
     };
 
-    const getReceiverInventory = () => {
+    const getReceiverInventory = (receiverId) => {
         let inventory = [];
         let beerList = [];
         let myInventory = [];
-        TradeService.getUserProfile($rootScope.receiverId).then((results) => {
+        TradeService.getUserProfile(receiverId).then((results) => {
             $scope.receiverProfile = results;
-            TradeService.getUserInventory($rootScope.receiverId).then((results) => {
+            TradeService.getUserInventory(receiverId).then((results) => {
                 inventory = results;
                 TradeService.getUserBeers().then((results) => {
                     beerList = results;
@@ -71,9 +83,6 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $scope, AuthServi
         });
         
     };
-
-    getMyInventory();
-    getReceiverInventory();
 
     $scope.addToTrade = (beerData, formData) => {
         let beerToTrade = TradeService.createTradeObject(beerData, formData, AuthService.getCurrentUid());
