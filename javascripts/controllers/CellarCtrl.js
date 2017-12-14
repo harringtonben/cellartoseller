@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("CellarCtrl", function($location, $scope, CellarService, UntappdService) {
+app.controller("CellarCtrl", function($location, $scope, AuthService, CellarService, UntappdService) {
     const saveToInventory = (beerId) => {
         let beerObject = CellarService.createInventoryObject(beerId);
         CellarService.addToInventory(beerObject).then((results) => {
@@ -33,8 +33,17 @@ app.controller("CellarCtrl", function($location, $scope, CellarService, UntappdS
                     console.log("Error in addToCellar");
                 });
             } else {
-                let beerFromInventory = Object.keys(results.data);
-                saveToInventory(beerFromInventory[0]);
+                let beerFromInventory = Object.keys(results.data)[0];
+                CellarService.getInventory(AuthService.getCurrentUid()).then((inventories) => {
+                    inventories.forEach((item) => {
+                        if (item.beer_id !== beerFromInventory) {
+                            saveToInventory(beerFromInventory);
+                        } else {
+                            $location.path("/profile");
+                        }
+                    });
+                });
+                
             }
         }).catch((error) => {
             console.log("Error in searchForBeer", error);
