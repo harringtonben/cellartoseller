@@ -7,7 +7,7 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
             getMyInventory($scope.tradeInfo.owner_id);
             getReceiverInventory($scope.tradeInfo.receiver_id);
         }).catch((error) => {
-
+            console.log("error in getTradeInfo", error);
         });
     };
 
@@ -107,7 +107,24 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
 
     $scope.cancelTrade = () => {
         TradeService.deleteTrade($routeParams.id).then((results) => {
-            console.log(results);
+            TradeService.getBeersInTrade($routeParams.id).then((tradeItems) => {  
+                if (tradeItems.length === 0) {
+                    $location.path("/profile");
+                }else {
+                    tradeItems.forEach((item) => {
+                        TradeService.getSingleInventoryItem(item.inventoryid).then((results) => {
+                            let inventory = results.data;
+                            inventory.quantity = inventory.quantity + JSON.parse(item.numberintrade);
+                            inventory.number_for_trade = inventory.number_for_trade + JSON.parse(item.numberintrade);
+                            TradeService.updateInventory(inventory, item.inventoryid).then((result) => {
+                                TradeService.deleteTradeItems(item.id).then((result) => {
+                                    $location.path("/profile");
+                                });
+                            });
+                        });
+                    });
+                }
+            });
         }).catch((error) => {
             console.log(error);
         });

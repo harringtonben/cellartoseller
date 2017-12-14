@@ -108,5 +108,13 @@ app.service("TradeService", function($http, $q, $rootScope, FIREBASE_CONFIG, Aut
         return $http.delete(`${FIREBASE_CONFIG.databaseURL}/trades/${tradeId}.json`);
     };
 
-    return {addBeerToTrade, createTradeDataObject, createTradeObject, deleteTrade, getBeersInTrade, getUserBeers, getUserInventory, getUserProfile, updateInventory, getTradeInfo};
+    const deleteTradeItems = (itemId) => {
+        return $http.delete(`${FIREBASE_CONFIG.databaseURL}/tradesdata/${itemId}.json`);
+    };
+
+    const getSingleInventoryItem = (inventoryId) => {
+        return $http.get(`${FIREBASE_CONFIG.databaseURL}/inventory/${inventoryId}.json`);
+    };
+
+    return {addBeerToTrade, createTradeDataObject, createTradeObject, deleteTrade, deleteTradeItems, getBeersInTrade, getSingleInventoryItem, getUserBeers, getUserInventory, getUserProfile, updateInventory, getTradeInfo};
 });
