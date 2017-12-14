@@ -35,8 +35,26 @@ app.service("CellarService", function($http, $q, FIREBASE_CONFIG, AuthService) {
     };
 
     const searchForBeer = (beerId) => {
-        return $http.get(`${FIREBASE_CONFIG.databaseURL}/beers.json?orderBy="untappd_bid"&equalTo="${beerId}"`);
+        return $http.get(`${FIREBASE_CONFIG.databaseURL}/beers.json?orderBy="untappd_bid"&equalTo=${beerId}`);
     };
 
-    return {addToCellar, addToInventory, createBeerObject, createInventoryObject, searchForBeer};
+    const getInventory = (userId) => {
+        let myInventory = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FIREBASE_CONFIG.databaseURL}/inventory.json?orderBy="uid"&equalTo="${userId}"`).then((results) => {
+                let inventory = results.data;
+                if (inventory != null) {
+                 Object.keys(inventory).forEach((key) => {
+                     inventory[key].id = key;
+                     myInventory.push(inventory[key]);   
+                 });    
+                 } 
+                 resolve(myInventory);
+            }).catch((error) => {
+                reject(error);
+            });
+        }); 
+    };
+
+    return {addToCellar, addToInventory, createBeerObject, createInventoryObject, searchForBeer, getInventory};
 });
