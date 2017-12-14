@@ -35,6 +35,10 @@
       color: #000; }
     .inventory .item p {
       margin: 0; }
+  .inventory .accepted {
+    position: absolute;
+    right: 0px;
+    top: 15px; }
 
 .item:last-child {
   border: none; }
