@@ -100,5 +100,9 @@ app.service("TradeService", function($http, $q, $rootScope, FIREBASE_CONFIG, Aut
         });
     };
 
-    return {addBeerToTrade, createTradeDataObject, createTradeObject, getBeersInTrade, getUserBeers, getUserInventory, getUserProfile, updateInventory};
+    const getTradeInfo = (tradeId) => {
+        return $http.get(`${FIREBASE_CONFIG.databaseURL}/trades/${tradeId}.json`);
+    };
+
+    return {addBeerToTrade, createTradeDataObject, createTradeObject, getBeersInTrade, getUserBeers, getUserInventory, getUserProfile, updateInventory, getTradeInfo};
 });
