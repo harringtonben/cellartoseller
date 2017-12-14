@@ -77,7 +77,7 @@ app.config(function($routeProvider) {
         templateUrl: 'partials/users/userdetail.html',
         controller: 'UserDetailCtrl'
     })
-    .when("/newtrade", {
+    .when("/newtrade/:id", {
         templateUrl: 'partials/trades/newtrade.html',
         controller: 'NewTradeCtrl'
     })

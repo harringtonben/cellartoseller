@@ -16,11 +16,9 @@ app.controller("UsersCtrl", function($location, $rootScope, $scope, AuthService,
     };
 
     $scope.startTrade = (receiverId) => {
-        $rootScope.receiverId = receiverId;
         let trade = UserService.createTradeObject(AuthService.getCurrentUid(), receiverId);
         UserService.newTrade(trade).then((results) => {
-            $rootScope.tradeId = results.data.name;
-            $location.path('/newtrade');
+            $location.path(`/newtrade/${results.data.name}`);
         }).catch((error) => {
             console.log("Error in newTrade", error);
         }); 
