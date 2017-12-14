@@ -14,6 +14,7 @@
     <div class=" inventory img-rounded col-xs-5 col-xs-offset-1">
         <h4>Active Trades</h4>
         <div class="item col-xs-11" ng-repeat="trade in trades">
+            <div ng-if="trade.is_accepted === 'true'"><i class="fa fa-check accepted" aria-hidden="true"></i></div>
             <div ng-click="editTrade(trade.id)">
                 <p>Trade Owner: {{trade.owner_name}}</p>
                 <p>Trade Receiver: {{trade.receiver_name}}</p>
