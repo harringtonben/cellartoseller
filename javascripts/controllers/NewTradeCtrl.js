@@ -3,9 +3,11 @@
 app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $scope, AuthService, TradeService) {
     const getTradeDetails = () => {
         TradeService.getTradeInfo($routeParams.id).then((results) => {
+            let ownerId = results.data.owner_id;
+            let receiverId = results.data.receiver_id;
             $scope.tradeInfo = results.data;
-            getMyInventory($scope.tradeInfo.owner_id);
-            getReceiverInventory($scope.tradeInfo.receiver_id);
+            getMyInventory(ownerId);
+            getReceiverInventory(receiverId);
         }).catch((error) => {
             console.log("error in getTradeInfo", error);
         });
