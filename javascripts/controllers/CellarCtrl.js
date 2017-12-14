@@ -34,14 +34,12 @@ app.controller("CellarCtrl", function($location, $scope, AuthService, CellarServ
                 });
             } else {
                 let beerFromInventory = Object.keys(results.data)[0];
-                CellarService.getInventory(AuthService.getCurrentUid()).then((inventories) => {
-                    inventories.forEach((item) => {
-                        if (item.beer_id !== beerFromInventory) {
-                            saveToInventory(beerFromInventory);
-                        } else {
-                            $location.path("/profile");
-                        }
-                    });
+                CellarService.getInventory(AuthService.getCurrentUid(), beerFromInventory).then((inventories) => {
+                    if (isEmpty(inventories[0]) === true) {
+                        saveToInventory(beerFromInventory);
+                    } else {
+                        $location.path("/profile");
+                    }
                 });
                 
             }

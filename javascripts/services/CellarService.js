@@ -38,7 +38,7 @@ app.service("CellarService", function($http, $q, FIREBASE_CONFIG, AuthService) {
         return $http.get(`${FIREBASE_CONFIG.databaseURL}/beers.json?orderBy="untappd_bid"&equalTo=${beerId}`);
     };
 
-    const getInventory = (userId) => {
+    const getInventory = (userId, beerId) => {
         let myInventory = [];
         return $q((resolve, reject) => {
             $http.get(`${FIREBASE_CONFIG.databaseURL}/inventory.json?orderBy="uid"&equalTo="${userId}"`).then((results) => {
@@ -46,7 +46,9 @@ app.service("CellarService", function($http, $q, FIREBASE_CONFIG, AuthService) {
                 if (inventory != null) {
                  Object.keys(inventory).forEach((key) => {
                      inventory[key].id = key;
-                     myInventory.push(inventory[key]);   
+                     if (inventory[key].beer_id === beerId) {
+                        myInventory.push(inventory[key]);  
+                     } 
                  });    
                  } 
                  resolve(myInventory);
