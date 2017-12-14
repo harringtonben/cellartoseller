@@ -37,6 +37,24 @@ app.service("ProfileService", function($http, $q, FIREBASE_CONFIG) {
         });
     };
 
+    const getInventoryInTrade = (inventoryId) => {
+        let myInventory = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FIREBASE_CONFIG.databaseURL}/tradesdata.json?orderBy="inventoryid"&equalTo="${inventoryId}"`).then((results) => {
+                let inventory = results.data;
+                if (inventory != null) {
+                 Object.keys(inventory).forEach((key) => {
+                     inventory[key].id = key;
+                     myInventory.push(inventory[key]);   
+                 });    
+                 } 
+                 resolve(myInventory);
+             }).catch((error) => {
+                 reject(error);
+             });
+        });
+    };
+
     const getMyInventory = (userId) => {
         let myInventory = [];
         return $q((resolve, reject) => {
@@ -77,5 +95,9 @@ app.service("ProfileService", function($http, $q, FIREBASE_CONFIG) {
         return $http.delete(`${FIREBASE_CONFIG.databaseURL}/inventory/${itemId}.json`);
     };
 
-    return {getAllUsers, deleteInventoryItem, getCurrentTrades, getMyBeers, getMyInventory};
+    const deleteTradeInventory = (tradeDataId) => {
+        return $http.delete(`${FIREBASE_CONFIG.databaseURL}/tradesdata/${tradeDataId}.json`);
+    };
+
+    return {getAllUsers, deleteInventoryItem, deleteTradeInventory, getCurrentTrades, getInventoryInTrade, getMyBeers, getMyInventory};
 });

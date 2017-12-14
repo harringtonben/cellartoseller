@@ -70,7 +70,14 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileSe
 
     $scope.deleteInventory = (inventoryId) => {
         ProfileService.deleteInventoryItem(inventoryId).then((results) => {
-            getInventory();
+            ProfileService.getInventoryInTrade(inventoryId).then((trades) => {
+                trades.forEach((trade) => {
+                    ProfileService.deleteTradeInventory(trade.id).then(() => {
+                        
+                    });
+                });
+                getInventory();
+            });
         }).catch((error) => {
             console.log("error in deleteInventory", error);
         });
