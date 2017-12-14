@@ -675,61 +675,6 @@
     }
   },
   "trades" : {
-    "-L06dHa6O8ZBrvkpi7Q0" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
-    "-L06dUcpvUkt1nJ5NUDa" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
-    "-L06ddWVWTtIrDunnj6S" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "GWnU6huNnaf4nUZprK5cUz8RcTC2"
-    },
-    "-L06dgfukBqcs7aLQXWd" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
-    "-L06fOoS6ZVQCRP8k5q9" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
-    "-L06fX85hE-g24b82R4n" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
-    "-L06fr4UYDrtQO75wBVE" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
-    "-L06gSvp7KOPvMefL2n2" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
-    "-L06gotnXMvpWfp2EDut" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
-    "-L06hWBdVR7ZrT2dYVzU" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
-    "-L06hoGsDVwXAtlDqcNL" : {
-      "is_accepted" : "",
-      "owner_id" : "nVVloSCSKmanMYrc8vdhtjiHjQu2",
-      "receiver_id" : "gHyUpaTp47dt0pxV36tx6Jj7aTH3"
-    },
     "trade0" : {
       "is_accepted" : "true",
       "owner_id" : "3",
