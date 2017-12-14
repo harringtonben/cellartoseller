@@ -64,9 +64,9 @@ app.service("TradeService", function($http, $q, $rootScope, FIREBASE_CONFIG, Aut
         };
     };
 
-    const createTradeDataObject = (beerData, formData) => {
+    const createTradeDataObject = (beerData, formData, tradeId) => {
         return {
-            "tradeid": $rootScope.tradeId,
+            "tradeid": tradeId,
             "beerid": beerData.id,
             "uid": beerData.uid,
             "inventoryid": beerData.inventory_id,
@@ -104,5 +104,17 @@ app.service("TradeService", function($http, $q, $rootScope, FIREBASE_CONFIG, Aut
         return $http.get(`${FIREBASE_CONFIG.databaseURL}/trades/${tradeId}.json`);
     };
 
-    return {addBeerToTrade, createTradeDataObject, createTradeObject, getBeersInTrade, getUserBeers, getUserInventory, getUserProfile, updateInventory, getTradeInfo};
+    const deleteTrade = (tradeId) => {
+        return $http.delete(`${FIREBASE_CONFIG.databaseURL}/trades/${tradeId}.json`);
+    };
+
+    const deleteTradeItems = (itemId) => {
+        return $http.delete(`${FIREBASE_CONFIG.databaseURL}/tradesdata/${itemId}.json`);
+    };
+
+    const getSingleInventoryItem = (inventoryId) => {
+        return $http.get(`${FIREBASE_CONFIG.databaseURL}/inventory/${inventoryId}.json`);
+    };
+
+    return {addBeerToTrade, createTradeDataObject, createTradeObject, deleteTrade, deleteTradeItems, getBeersInTrade, getSingleInventoryItem, getUserBeers, getUserInventory, getUserProfile, updateInventory, getTradeInfo};
 });
