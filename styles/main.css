@@ -43,6 +43,10 @@
 .item:last-child {
   border: none; }
 
+.user img {
+  height: 100px;
+  width: 100px; }
+
 .users img {
   height: 100px;
   width: 100px; }
