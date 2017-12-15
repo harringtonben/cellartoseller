@@ -42,24 +42,46 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
     };
 
     $scope.denyTrade = (ownerItems, receiverItems) => {
-        ownerItems.forEach((item) => {
-            TradeDetailService.getTradeInventory(item.inventoryid).then((results) => {
-                let inventoryItem = results.data; 
-                inventoryItem.quantity = JSON.parse(inventoryItem.quantity) + JSON.parse(item.numberintrade);
-                inventoryItem.number_for_trade = JSON.parse(inventoryItem.number_for_trade) + JSON.parse(item.numberintrade);
-                TradeDetailService.updateTradeInventory(inventoryItem, item.inventoryid).then((results) => {
-                    TradeDetailService.deleteTradeData(item.id).then(() => {
-                        deleteReceiverTrades(receiverItems);
-                    }).catch((error) => {
-                        console.log("error in deleteTradeData", error);
+        if (ownerItems.length === 0 && receiverItems.length === 0) {
+            TradeDetailService.deleteTrade($routeParams.id).then(() => {
+                $location.path("/profile");
+            });
+        } else if (ownerItems.length === 0 && receiverItems.length !== 0) {
+            deleteReceiverTrades(receiverItems);
+        } else if (ownerItems.length !== 0 && receiverItems.length === 0) {
+            ownerItems.forEach((item) => {
+                TradeDetailService.getTradeInventory(item.inventoryid).then((results) => {
+                    let inventoryItem = results.data; 
+                    inventoryItem.quantity = JSON.parse(inventoryItem.quantity) + JSON.parse(item.numberintrade);
+                    inventoryItem.number_for_trade = JSON.parse(inventoryItem.number_for_trade) + JSON.parse(item.numberintrade);
+                    TradeDetailService.updateTradeInventory(inventoryItem, item.inventoryid).then((results) => {
+                        TradeDetailService.deleteTradeData(item.id).then(() => {
+                            
+                        });
                     });
                 }).catch((error) => {
-                    console.log("error in updateTrade", error);
+                    console.log("error in getTradeInventory", error);
                 });
-            }).catch((error) => {
-                console.log("error in getTradeInventory", error);
             });
-        });
+            TradeDetailService.deleteTrade($routeParams.id).then(() => {
+                $location.path("/profile"); 
+            }); 
+        } else {
+            ownerItems.forEach((item) => {
+                TradeDetailService.getTradeInventory(item.inventoryid).then((results) => {
+                    let inventoryItem = results.data; 
+                    inventoryItem.quantity = JSON.parse(inventoryItem.quantity) + JSON.parse(item.numberintrade);
+                    inventoryItem.number_for_trade = JSON.parse(inventoryItem.number_for_trade) + JSON.parse(item.numberintrade);
+                    TradeDetailService.updateTradeInventory(inventoryItem, item.inventoryid).then((results) => {
+                        TradeDetailService.deleteTradeData(item.id).then(() => {
+                            deleteReceiverTrades(receiverItems);
+                        });
+                    });
+                }).catch((error) => {
+                    console.log("error in getTradeInventory", error);
+                });
+            });
+        }   
     };
 
     $scope.deleteItem = (item) => {
