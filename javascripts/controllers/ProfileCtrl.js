@@ -61,8 +61,15 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileSe
         });
     };
 
+    const getProfileInfo = () => {
+        ProfileService.getUserDetails(AuthService.getCurrentUid()).then((results) => {
+            $scope.profileInfo = results;          
+        });
+    };
+
     getInventory();
     getTrades();
+    getProfileInfo();
     
     $scope.editTrade = (tradeId) => {
         $location.path(`/trades/${tradeId}`);

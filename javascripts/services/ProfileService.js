@@ -91,6 +91,24 @@ app.service("ProfileService", function($http, $q, FIREBASE_CONFIG) {
         });
     };
 
+    const getUserDetails = (userId) => {
+        let myUser = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FIREBASE_CONFIG.databaseURL}/users.json?orderBy="uid"&equalTo="${userId}"`).then((results) => {
+                let users = results.data;
+                if (users != null) {
+                 Object.keys(users).forEach((key) => {
+                     users[key].id = key;
+                     myUser.push(users[key]);   
+                 });    
+                 } 
+                 resolve(myUser[0]);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    };
+
     const deleteInventoryItem = (itemId) => {
         return $http.delete(`${FIREBASE_CONFIG.databaseURL}/inventory/${itemId}.json`);
     };
@@ -99,5 +117,5 @@ app.service("ProfileService", function($http, $q, FIREBASE_CONFIG) {
         return $http.delete(`${FIREBASE_CONFIG.databaseURL}/tradesdata/${tradeDataId}.json`);
     };
 
-    return {getAllUsers, deleteInventoryItem, deleteTradeInventory, getCurrentTrades, getInventoryInTrade, getMyBeers, getMyInventory};
+    return {getAllUsers, deleteInventoryItem, deleteTradeInventory, getCurrentTrades, getInventoryInTrade, getMyBeers, getMyInventory, getUserDetails};
 });
