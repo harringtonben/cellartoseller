@@ -7,12 +7,14 @@
     <title>Cellar To Seller</title>
     <link rel="stylesheet" type="text/css" href="./lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./lib/node_modules/ng-toast/dist/ngToast.min.css">
     <link rel="stylesheet" type="text/css" href="./styles/main.css">
 </head>
 <body ng-app="CellarToSeller">
     
     <div ng-include="'./partials/navbar.html'"></div>
     <div class="container" ng-view></div>
+    <toast></toast>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>  
 <script type="text/javascript" src="./lib/node_modules/jquery/dist/jquery.min.js"></script>
@@ -21,6 +23,7 @@
 <script type="text/javascript" src="./lib/node_modules/angular-animate/angular-animate.min.js"></script>
 <script type="text/javascript" src="./lib/node_modules/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="./lib/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="./lib/node_modules/ng-toast/dist/ngToast.min.js"></script>
 
 <script type="text/javascript" src="./javascripts/app.js"></script>
 <script type="text/javascript" src="./javascripts/AppConstants.js"></script>
@@ -33,6 +36,7 @@
 <script type="text/javascript" src="./javascripts/services/TradeService.js"></script>
 <script type="text/javascript" src="./javascripts/services/TradeDetailService.js"></script>
 <script type="text/javascript" src="./javascripts/services/UserService.js"></script>
+<script type="text/javascript" src="./javascripts/services/NgToastService.js"></script>
 <script type="text/javascript" src="./javascripts/services/UntappdService.js"></script>
 
 <script type="text/javascript" src="./javascripts/controllers/AuthCtrl.js"></script>

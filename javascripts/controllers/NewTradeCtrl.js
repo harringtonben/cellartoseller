@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $scope, AuthService, TradeService) {
+app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $scope, AuthService, NgToastService, TradeService) {
     const getTradeDetails = () => {
         TradeService.getTradeInfo($routeParams.id).then((results) => {
             let ownerId = results.data.owner_id;
@@ -96,6 +96,7 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
                     getMyInventory($scope.tradeInfo.owner_id);
                     getReceiverInventory($scope.tradeInfo.receiver_id);
                     getTradeData(tradeItems);
+                    NgToastService.toast(`${beerData.beer_name} has been added to the trade!`);
                 }).catch((error) => {
                     console.log("error in getBeersInTrade", error);
                 });
@@ -120,6 +121,7 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
                             inventory.number_for_trade = inventory.number_for_trade + JSON.parse(item.numberintrade);
                             TradeService.updateInventory(inventory, item.inventoryid).then((result) => {
                                 TradeService.deleteTradeItems(item.id).then((result) => {
+                                    NgToastService.toast('Trade has been cancelled');
                                     $location.path("/profile");
                                 });
                             });
@@ -133,6 +135,7 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
     };
 
     $scope.finishTrade = () => {
+        NgToastService.toast('Trade has been submitted');
         $location.path("/profile");
     };
 
@@ -169,6 +172,7 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
                     getMyInventory($scope.tradeInfo.owner_id);
                     getReceiverInventory($scope.tradeInfo.receiver_id);
                     getTradeData(tradeItems);
+                    NgToastService.toast(`${beerData.beer_name} has been added to the trade!`);
                 }).catch((error) => {
                     console.log("error in getBeersInTrade", error);
                 });

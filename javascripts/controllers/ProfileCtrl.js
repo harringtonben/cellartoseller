@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileService) {
+app.controller("ProfileCtrl", function($location, $scope, AuthService, NgToastService, ProfileService) {
     const getInventory = () => {
         let inventory = [];
         let beerList = [];
@@ -75,7 +75,7 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileSe
         $location.path(`/trades/${tradeId}`);
     };
 
-    $scope.deleteInventory = (inventoryId) => {
+    $scope.deleteInventory = (inventoryId, beerName) => {
         ProfileService.deleteInventoryItem(inventoryId).then((results) => {
             ProfileService.getInventoryInTrade(inventoryId).then((trades) => {
                 trades.forEach((trade) => {
@@ -84,6 +84,7 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, ProfileSe
                     });
                 });
                 getInventory();
+                NgToastService.toast(`${beerName} has been deleted from your inventory!`);
             });
         }).catch((error) => {
             console.log("error in deleteInventory", error);
