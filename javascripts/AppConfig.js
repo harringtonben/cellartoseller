@@ -90,8 +90,8 @@ app.config(function($routeProvider) {
 
 app.config(['ngToastProvider', function(ngToast) {
   ngToast.configure({
-    verticalPosition: 'top',
-    horizontalPosition: 'left',
+    verticalPosition: 'bottom',
+    horizontalPosition: 'right',
     animation: 'fade',
     maxNumber: 1
   });

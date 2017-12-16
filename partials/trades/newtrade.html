@@ -13,7 +13,7 @@
                     <input type="text" size="4" maxlength="4" ng-model="ownerTrade.numberToTrade" required>
                 </div>
                 <div>
-                    <button type="submit" class="btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="addToTrade(trade, ownerTrade)"></i></button>
+                    <button type="submit" class="btn submit-trade" value="Save" ng-click="addToTrade(trade, ownerTrade)"><i class="fa fa-cart-plus" aria-hidden="true" ></i></button>
                 </div>
             </div>
         </form>
@@ -35,7 +35,7 @@
                     <input type="text" size="4" maxlength="4" ng-model="receiverTrade.numberToTrade" required>
                 </div>
                 <div>
-                    <button type="submit" class="add-to-trade btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="receiverAddToTrade(trade2, receiverTrade)"></i></button>
+                    <button type="submit" class="add-to-trade btn submit-trade" value="Save" ng-click="receiverAddToTrade(trade2, receiverTrade)"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
                 </div>
             </div>
         </form>
