@@ -2,4 +2,4 @@
 
 'use strict';
 
-const app = angular.module("CellarToSeller", ["ngAnimate", "ngRoute", "ngSanitize"]);
+const app = angular.module("CellarToSeller", ["ngAnimate", "ngRoute", "ngSanitize", "ngToast"]);
