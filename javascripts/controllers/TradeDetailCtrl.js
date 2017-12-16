@@ -1,11 +1,12 @@
 'use strict';
 
-app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, $scope, TradeDetailService) {
+app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, $scope, NgToastService, TradeDetailService) {
     $scope.acceptTrade = (trade) => {
         TradeDetailService.getTradeUids(trade[0].tradeid).then((results) => {
             let acceptedTrade = results.data;
             acceptedTrade.is_accepted = "true";
             TradeDetailService.updateTrade(acceptedTrade, trade[0].tradeid).then((results) => {
+                NgToastService.toast('Trade accepted!');
                 $location.path("/profile");
             }).catch((error) => {
                 console.log("error in updateTrade", error);
@@ -25,6 +26,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                 TradeDetailService.updateTradeInventory(inventoryItem, item.inventoryid).then((results) => {
                     TradeDetailService.deleteTradeData(item.id).then(() => {
                         TradeDetailService.deleteTrade(item.tradeid).then(() => {
+                            NgToastService.toast('This trade has been denied.');
                             $location.path("/profile");
                         }).catch((error) => {
                             console.log("error in deleteTrade", error);
@@ -44,6 +46,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
     $scope.denyTrade = (ownerItems, receiverItems) => {
         if (ownerItems.length === 0 && receiverItems.length === 0) {
             TradeDetailService.deleteTrade($routeParams.id).then(() => {
+                NgToastService.toast('This trade has been denied.');
                 $location.path("/profile");
             });
         } else if (ownerItems.length === 0 && receiverItems.length !== 0) {
@@ -64,6 +67,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                 });
             });
             TradeDetailService.deleteTrade($routeParams.id).then(() => {
+                NgToastService.toast('This trade has been denied.');
                 $location.path("/profile"); 
             }); 
         } else {
@@ -92,6 +96,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
             TradeDetailService.updateTradeInventory(inventoryToUpdate, item.inventoryid).then((results) => {
                 TradeDetailService.deleteTradeData(item.id).then((results) => {
                     getTradeDetails();
+                    NgToastService.toast('Item has been deleted.');
                 }).catch((error) => {
                     console.log("error in deleteTradeData", error);
                 });
@@ -199,6 +204,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                         inventoryObject.number_for_trade = JSON.parse(inventoryObject.number_for_trade) + updatedNumber;
                         TradeDetailService.updateTradeInventory(inventoryObject, trade.inventoryid).then((results) => {
                             getTradeDetails();
+                            NgToastService.toast('This trade has been updated.');
                         }).catch((error) => {
                             console.log("error in updateTradeInventory", error);
                         });
@@ -213,6 +219,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                         inventoryObject.number_for_trade = JSON.parse(inventoryObject.number_for_trade) - updatedNumber;
                         TradeDetailService.updateTradeInventory(inventoryObject, trade.inventoryid).then((results) => {
                             getTradeDetails();
+                            NgToastService.toast('This trade has been updated.');
                         }).catch((error) => {
                             console.log("error in updateTradeInventory", error);
                         });
