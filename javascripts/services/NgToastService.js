@@ -5,8 +5,7 @@ app.service("NgToastService", function(ngToast) {
         ngToast.success({
             content: message,
             dismissButton: true,
-            timeout: 2000,
-            verticalPosition: 'bottom'
+            timeout: 2000
           });
     };
 
