@@ -23,11 +23,7 @@ app.controller("UserDetailCtrl", function($routeParams, $scope, UserService) {
                         });
                     });
                     $scope.inventory = userInventory;
-                }).catch((error) => {
-                    console.log("Error in getMyBeers", error);
                 });
-            }).catch((error) => {
-                console.log("Error in getUserInventory", error);
             });
         }).catch((error) => {
             console.log("Error in getUserDetails", error);

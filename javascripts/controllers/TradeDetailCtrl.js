@@ -8,10 +8,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
             TradeDetailService.updateTrade(acceptedTrade, trade[0].tradeid).then((results) => {
                 NgToastService.toast('Trade accepted!');
                 $location.path("/profile");
-            }).catch((error) => {
-                console.log("error in updateTrade", error);
             });
-
         }).catch((error) => {
             console.log("error in getTradeUids", error);
         });
@@ -28,14 +25,8 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                         TradeDetailService.deleteTrade(item.tradeid).then(() => {
                             NgToastService.toast('This trade has been denied.');
                             $location.path("/profile");
-                        }).catch((error) => {
-                            console.log("error in deleteTrade", error);
                         });
-                    }).catch((error) => {
-                        console.log("error in deleteTradeData", error);
                     });
-                }).catch((error) => {
-                    console.log("error in updateTrade", error);
                 });
             }).catch((error) => {
                 console.log("error in getTradeInventory", error);
@@ -97,11 +88,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                 TradeDetailService.deleteTradeData(item.id).then((results) => {
                     getTradeDetails();
                     NgToastService.toast('Item has been deleted.');
-                }).catch((error) => {
-                    console.log("error in deleteTradeData", error);
                 });
-            }).catch((error) => {
-                console.log("error in updateTradeInventory", error);
             });
         }).catch((error) => {
             console.log("error in getTradeInventory", error);
@@ -169,17 +156,9 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                                     }
                                 });
                             });
-                        }).catch((error) => {
-                            console.log("error in getInventory", error);
                         });
-                    }).catch((error) => {
-                        console.log("error in getInventory", error);
                     });
-                }).catch((error) => {
-                    console.log("error in getTradeUsers", error);
                 });
-            }).catch((error) => {
-                console.log("error in getTradeUids", error);
             });
         }).catch((error) => {
             console.log("error in getTradeItems", error);
@@ -205,11 +184,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                         TradeDetailService.updateTradeInventory(inventoryObject, trade.inventoryid).then((results) => {
                             getTradeDetails();
                             NgToastService.toast('This trade has been updated.');
-                        }).catch((error) => {
-                            console.log("error in updateTradeInventory", error);
                         });
-                    }).catch((error) => {
-                        console.log("error in getTradeInventory", error);
                     });
                 } else if (newTradeNumber > oldTradeNumber) {
                     updatedNumber = newTradeNumber - oldTradeNumber;
@@ -220,15 +195,9 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                         TradeDetailService.updateTradeInventory(inventoryObject, trade.inventoryid).then((results) => {
                             getTradeDetails();
                             NgToastService.toast('This trade has been updated.');
-                        }).catch((error) => {
-                            console.log("error in updateTradeInventory", error);
                         });
-                    }).catch((error) => {
-                        console.log("error in getTradeInventory", error);
                     });
                 }
-            }).catch((error) => {
-                console.log("error in updateTradeDetails", error);
             });
         }).catch((error) => {
             console.log("error in getTrade", error);
