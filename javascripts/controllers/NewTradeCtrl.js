@@ -39,11 +39,7 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
                         });
                     });
                     $scope.inventory = myInventory;
-                }).catch((error) => {
-                    console.log("Error in getMyBeers", error);
                 });
-            }).catch((error) => {
-                console.log("error in getInventory", error);
             });
         }).catch((error) => {
             console.log("Error in getUserProfile", error);
@@ -74,11 +70,7 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
                         });
                     });
                     $scope.receiverInventory = myInventory;
-                }).catch((error) => {
-                    console.log("Error in getMyBeers", error);
                 });
-            }).catch((error) => {
-                console.log("error in getInventory", error);
             });
         }).catch((error) => {
             console.log("Error in getUserProfile", error);
@@ -97,11 +89,7 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
                     getReceiverInventory($scope.tradeInfo.receiver_id);
                     getTradeData(tradeItems);
                     NgToastService.toast(`${beerData.beer_name} has been added to the trade!`);
-                }).catch((error) => {
-                    console.log("error in getBeersInTrade", error);
                 });
-            }).catch((error) => {
-                console.log("error in updateInventory", error);
             });
         }).catch((error) => {
             console.log("Error in addBeerToTrade", error);
@@ -173,11 +161,7 @@ app.controller("NewTradeCtrl", function($location, $rootScope, $routeParams, $sc
                     getReceiverInventory($scope.tradeInfo.receiver_id);
                     getTradeData(tradeItems);
                     NgToastService.toast(`${beerData.beer_name} has been added to the trade!`);
-                }).catch((error) => {
-                    console.log("error in getBeersInTrade", error);
                 });
-            }).catch((error) => {
-                console.log("error in updateInventory", error);
             });
         }).catch((error) => {
             console.log("Error in addBeerToTrade", error);

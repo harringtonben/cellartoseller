@@ -21,8 +21,6 @@ app.controller("ProfileCtrl", function($location, $scope, AuthService, NgToastSe
                     });
                 });
                 $scope.inventory = myInventory;
-            }).catch((error) => {
-                console.log("Error in getMyBeers", error);
             });
         }).catch((error) => {
             console.log("error in getInventory", error);
