@@ -13,11 +13,14 @@
   
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right" id="navlinks">
+        <ul class="nav navbar-nav navbar-right" id="navlinks" ng-show="navbar">
           <li><a href="#!/addtocellar">Add To Cellar</a></li>
           <li><a href="#!/users">Users</a></li>
           <li><a href="#!/profile">My Profile</a></li>
           <li><a ng-click="logoutUser()">Log Out</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" id="navlinks" ng-show="!navbar">
+          <li><a href="#!/auth">Login</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
