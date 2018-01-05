@@ -4,7 +4,7 @@
  
 - On page load, the user...
 
-![Demo] (http://g.recordit.co/eahHL41dTc.gif)
+![Demo] (https://github.com/harringtonben/cellartoseller/blob/master/CellarToSeller.gif?raw=true)
 
 #### Built With: 
 
