@@ -121,6 +121,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                         }
                     });
                     $scope.usersInTrade = tradeUsers;
+                    console.log($scope.usersInTrade);
                     tradeItems.forEach((item) => {
                         if (item.uid === tradeUsers.owner_id) {
                             ownerTrades.push(item);

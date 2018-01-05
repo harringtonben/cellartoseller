@@ -1,7 +1,7 @@
 <div class="col-xs-5">
     <h2>{{usersInTrade.owner_name}}'s Beers for Trade</h2>
     <div class="trade-profile img-rounded" ng-repeat="trade in ownerTradeItems">
-        <button class="btn btn-md btn-default delete" ng-click="deleteItem(trade)"><i class="fa fa-trash-o"></i></button>
+        <button ng-if="usersInTrade.is_accepted != 'true'" class="btn btn-md btn-default delete" ng-click="deleteItem(trade)"><i class="fa fa-trash-o"></i></button>
         <h4>{{trade.brewery_name}} {{trade.beer_name}}</h4>
         <p>Number available for trade: {{trade.number_for_trade}}</p>
         <form name="ownerTrade">
@@ -11,7 +11,7 @@
                     <input type="text" size="4" maxlength="4" ng-model="trade.numberintrade" required>
                 </div>
                 <div>
-                    <button type="submit" class="btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="updateTrade(trade)"></i></button>
+                    <button type="submit" ng-if="usersInTrade.is_accepted != 'true'" class="btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="updateTrade(trade)"></i></button>
                 </div>
             </div>
         </form>
@@ -21,7 +21,7 @@
 <div class="col-xs-5">
         <h2>{{usersInTrade.receiver_name}}'s Beers for Trade</h2>
         <div class="trade-profile img-rounded" ng-repeat="trade in receiverTradeItems">
-            <button class="btn btn-md btn-default delete" ng-click="deleteItem(trade)"><i class="fa fa-trash-o"></i></button>
+            <button ng-if="usersInTrade.is_accepted != 'true'" class="btn btn-md btn-default delete" ng-click="deleteItem(trade)"><i class="fa fa-trash-o"></i></button>
             <h4>{{trade.brewery_name}} {{trade.beer_name}}</h4>
             <p>Number available for trade: {{trade.number_for_trade}}</p>
             <form name="ownerTrade">
@@ -31,14 +31,14 @@
                         <input type="text" size="4" maxlength="4" ng-model="trade.numberintrade" required>
                     </div>
                     <div>
-                        <button type="submit" class="btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="updateTrade(trade)"></i></button>
+                        <button ng-if="usersInTrade.is_accepted != 'true'" type="submit" class="btn submit-trade" value="Save"><i class="fa fa-cart-plus" aria-hidden="true" ng-click="updateTrade(trade)"></i></button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <div class="col-xs-12 text-center">
-        <button ng-show="usersInTrade.receiver_id === tradeUser" class="btn btn-default" ng-click="acceptTrade(ownerTradeItems)">Accept Trade</button>
-        <button ng-show="usersInTrade.receiver_id === tradeUser" class="btn btn-default" ng-click="denyTrade(ownerTradeItems, receiverTradeItems)">Deny Trade</button>
+        <button ng-if="usersInTrade.is_accepted != 'true'" ng-show="usersInTrade.receiver_id === tradeUser" class="btn btn-default" ng-click="acceptTrade(ownerTradeItems)">Accept Trade</button>
+        <button ng-if="usersInTrade.is_accepted != 'true'" ng-show="usersInTrade.receiver_id === tradeUser" class="btn btn-default" ng-click="denyTrade(ownerTradeItems, receiverTradeItems)">Deny Trade</button>
         <button class="btn btn-default" ng-click="finishTrade()">I'm Done Here</button>
     </div>
