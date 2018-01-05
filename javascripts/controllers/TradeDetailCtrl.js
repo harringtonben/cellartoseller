@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, $scope, NgToastService, TradeDetailService) {
+app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, $scope, NgToastService, AuthService, TradeDetailService) {
     $scope.acceptTrade = (trade) => {
         TradeDetailService.getTradeUids(trade[0].tradeid).then((results) => {
             let acceptedTrade = results.data;
@@ -13,6 +13,12 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
             console.log("error in getTradeUids", error);
         });
     };
+
+    const currentUser = () => {
+        $scope.tradeUser = AuthService.getCurrentUid();
+    };
+
+    currentUser();
 
     const deleteReceiverTrades = (receiverItems) => {
         receiverItems.forEach((item) => {
@@ -115,6 +121,7 @@ app.controller("TradeDetailCtrl", function($location, $rootScope, $routeParams, 
                         }
                     });
                     $scope.usersInTrade = tradeUsers;
+                    console.log($scope.usersInTrade);
                     tradeItems.forEach((item) => {
                         if (item.uid === tradeUsers.owner_id) {
                             ownerTrades.push(item);

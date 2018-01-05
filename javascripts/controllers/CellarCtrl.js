@@ -37,7 +37,7 @@ app.controller("CellarCtrl", function($location, $scope, AuthService, CellarServ
             } else {
                 let beerFromInventory = Object.keys(results.data)[0];
                 CellarService.getInventory(AuthService.getCurrentUid(), beerFromInventory).then((inventories) => {
-                    if (isEmpty(inventories[0]) === true) {
+                    if (isEmpty(inventories[0]) === true || inventories.length === 0) {
                         saveToInventory(beerFromInventory, beerName);
                     } else {
                         NgToastService.toast('This beer is already in your inventory!');
